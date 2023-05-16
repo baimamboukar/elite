@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "608830968984",
+    "project_id": "elite-one-mobile",
+    "storage_bucket": "elite-one-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608830968984:android:c4e615f64efccc97986ced",
+        "android_client_info": {
+          "package_name": "dev.baimamboukar.eliteone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608830968984-o9iunp4cd51pmtrft0lnbk8v4ta3fq1s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFz7VvT89_JD94_4TtuEm2QnmUMBfs4xI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "608830968984-o9iunp4cd51pmtrft0lnbk8v4ta3fq1s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
