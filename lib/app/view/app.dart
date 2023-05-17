@@ -24,9 +24,11 @@ class _EliteOneState extends State<EliteOne> {
     return MaterialApp.router(
       theme: theme.toThemeData(Brightness.light),
       darkTheme: theme.toThemeData(Brightness.dark),
+      themeMode: ThemeMode.light,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       routerConfig: _router.config(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
