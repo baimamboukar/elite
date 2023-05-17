@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:elite_one/src/router/guards/elite_home_guard.dart';
 import 'package:elite_one/src/router/router.gr.dart';
 
 @AutoRouterConfig()
@@ -7,12 +8,15 @@ class EliteRouter extends $EliteRouter {
   List<AutoRoute> get routes => [
         AutoRoute(
           page: EliteWelcome.page,
-          path: '/',
-          initial: true,
+          path: '/welcome',
         ),
         AutoRoute(
           page: EliteRoot.page,
           path: '/elite-home',
+          initial: true,
+          guards: [
+            EliteHomeGuard(),
+          ],
           children: [
             AutoRoute(
               page: EliteMain.page,
@@ -25,6 +29,10 @@ class EliteRouter extends $EliteRouter {
             AutoRoute(
               page: EliteStore.page,
               path: 'elite-store',
+            ),
+            AutoRoute(
+              page: EliteUserProfile.page,
+              path: 'elite-user-profile',
             ),
           ],
         ),

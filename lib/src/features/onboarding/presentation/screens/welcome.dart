@@ -1,10 +1,13 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:elite_one/src/app/assets.dart';
+import 'package:elite_one/src/features/auth/domain/cubits/cubit/elite_auth_cubit.dart';
 import 'package:elite_one/src/shared/extensions/extensions.dart';
 import 'package:elite_one/src/shared/widgets/elite_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 @RoutePage()
 class EliteWelcome extends StatelessWidget {
@@ -78,17 +81,44 @@ class EliteWelcome extends StatelessWidget {
                     stopPauseOnTap: true,
                   ),
                   const Spacer(),
-                  EliteButton(
-                    text: 'Continue with google',
-                    color: context.colorScheme.onPrimary,
-                    action: () {
-                      context.router.pushNamed('/elite-home');
+                  BlocConsumer<EliteAuthCubit, EliteAuthState>(
+                    listener: (BuildContext context, EliteAuthState state) {
+                      state.maybeMap(
+                        authenticated: (state) {
+                          context.router.replaceNamed('/elite-home');
+                        },
+                        orElse: () {},
+                        failure: (failure) => QuickAlert.show(
+                          context: context,
+                          type: QuickAlertType.error,
+                          title: 'Failed to continue',
+                          text: 'Something went wrong! Please try again later',
+                        ),
+                      );
                     },
-                    icon: Image.asset(
-                      Assets.assetsImagesGoogle,
-                      height: 24,
-                      width: 24,
-                    ),
+                    builder: (BuildContext context, EliteAuthState state) {
+                      return state.maybeWhen(
+                        orElse: () => EliteButton(
+                          text: 'Continue with google',
+                          color: context.colorScheme.onPrimary,
+                          action: () {
+                            context.read<EliteAuthCubit>().signUpWithGoogle();
+                          },
+                          icon: Image.asset(
+                            Assets.assetsImagesGoogle,
+                            height: 24,
+                            width: 24,
+                          ),
+                        ),
+                        processing: () => EliteButton(
+                          text: 'Please wait....',
+                          color: context.colorScheme.onPrimary,
+                          action: () {
+                            //context.router.pushNamed('/elite-home');
+                          },
+                        ),
+                      );
+                    },
                   ),
                   14.vGap,
                   EliteButton(

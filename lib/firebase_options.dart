@@ -48,17 +48,17 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyBiaauNxVyfTfbvpzUf3p8ul4Oz3dBb_Dc',
-    appId: '1:608830968984:web:2176c0aefd8ac315986ced',
+    appId: '1:608830968984:web:d72853475ad04c07986ced',
     messagingSenderId: '608830968984',
     projectId: 'elite-one-mobile',
     authDomain: 'elite-one-mobile.firebaseapp.com',
     storageBucket: 'elite-one-mobile.appspot.com',
-    measurementId: 'G-P3M2S2BBQQ',
+    measurementId: 'G-0FVEYMH5V5',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBFz7VvT89_JD94_4TtuEm2QnmUMBfs4xI',
-    appId: '1:608830968984:android:c4e615f64efccc97986ced',
+    appId: '1:608830968984:android:47d6f0132605f537986ced',
     messagingSenderId: '608830968984',
     projectId: 'elite-one-mobile',
     storageBucket: 'elite-one-mobile.appspot.com',
@@ -66,7 +66,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyC68tO269LP8mG0wDQ1d5ncztcXZsPZ_GU',
-    appId: '1:608830968984:ios:eacdf4a323e7aaa9986ced',
+    appId: '1:608830968984:ios:fe22ff33eb31fba7986ced',
     messagingSenderId: '608830968984',
     projectId: 'elite-one-mobile',
     storageBucket: 'elite-one-mobile.appspot.com',

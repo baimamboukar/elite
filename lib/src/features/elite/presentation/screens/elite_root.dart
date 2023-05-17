@@ -14,7 +14,7 @@ class EliteRoot extends StatelessWidget {
       routes: const [
         elite_router.EliteMain(),
         elite_router.EliteInfos(),
-        elite_router.EliteStore(),
+        elite_router.EliteUserProfile(),
       ],
       transitionBuilder: (context, child, animation) => FadeTransition(
         opacity: animation,
@@ -26,6 +26,7 @@ class EliteRoot extends StatelessWidget {
           child: NavigationBar(
             elevation: 0,
             height: 58,
+            backgroundColor: context.colorScheme.onPrimary,
             labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
             indicatorColor: context.colorScheme.primary.withOpacity(.75),
             destinations: [
@@ -45,13 +46,9 @@ class EliteRoot extends StatelessWidget {
                 ),
                 label: 'Standings',
               ),
-              NavigationDestination(
-                icon: Image.asset(
-                  Assets.assetsImagesJersey,
-                  height: 24,
-                  width: 24,
-                ),
-                label: 'Store',
+              const NavigationDestination(
+                icon: Icon(Icons.settings),
+                label: 'Settings',
               ),
             ],
             selectedIndex: router.activeIndex,

@@ -7,14 +7,14 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:608830968984:android:c4e615f64efccc97986ced",
+        "mobilesdk_app_id": "1:608830968984:android:47d6f0132605f537986ced",
         "android_client_info": {
           "package_name": "dev.baimamboukar.eliteone"
         }
       },
       "oauth_client": [
         {
-          "client_id": "608830968984-o9iunp4cd51pmtrft0lnbk8v4ta3fq1s.apps.googleusercontent.com",
+          "client_id": "608830968984-128qskd8o46l58j0ust3ms1jii0m25or.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,8 +27,15 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "608830968984-o9iunp4cd51pmtrft0lnbk8v4ta3fq1s.apps.googleusercontent.com",
+              "client_id": "608830968984-128qskd8o46l58j0ust3ms1jii0m25or.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "608830968984-okjgtu26v93v5futvgbaqkb3a3se7i7c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.baimamboukar.eliteone"
+              }
             }
           ]
         }
