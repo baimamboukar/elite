@@ -47,7 +47,9 @@ class EliteAuthServices {
           throw Exception('The user information could not be saved');
         }
       } else {
-        throw Exception('The user already exists');
+        final eliteUser =
+            await _firestoreAuthServices.getUserDataFromFirestore(user.uid);
+        return eliteUser;
       }
     } catch (e) {
       rethrow;
@@ -87,7 +89,7 @@ class EliteAuthServices {
         }
       } else {
         final omnisenseUser =
-            _firestoreAuthServices.getUserDataFromFirestore(user.uid);
+            await _firestoreAuthServices.getUserDataFromFirestore(user.uid);
         return omnisenseUser;
       }
     } catch (err) {
