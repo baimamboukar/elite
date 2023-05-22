@@ -1,5 +1,4 @@
-import 'package:elite_one/src/app/assets.dart';
-import 'package:elite_one/src/features/elite/data/models/standing.dart';
+import 'package:elite_one/src/features/elite/data/models/league_standing.dart';
 import 'package:elite_one/src/shared/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +14,6 @@ class StandingTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isInTop3 = index < 3;
-    final isInLast3 = index > standings.length - 3;
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 2,
@@ -25,11 +22,7 @@ class StandingTile extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4),
-          color: isInLast3
-              ? context.colorScheme.errorContainer
-              : isInTop3
-                  ? context.colorScheme.primaryContainer.withOpacity(0.5)
-                  : context.colorScheme.surface,
+          color: context.colorScheme.errorContainer,
         ),
         child: Padding(
           padding: const EdgeInsets.all(8),
@@ -45,21 +38,21 @@ class StandingTile extends StatelessWidget {
               Expanded(
                 child: Row(
                   children: [
-                    Image.asset(
-                      standing.club.logo ?? Assets.assetsImagesFootball,
-                      height: 18,
-                      width: 18,
-                    ),
+                    // Image.asset(
+                    //   standing.club.logo ?? Assets.assetsImagesFootball,
+                    //   height: 18,
+                    //   width: 18,
+                    // ),
                     8.hGap,
-                    Text(standing.club.name),
+                    Text(standing.standing_team),
                     const Spacer(),
-                    Text(standing.goalDifference.toString()),
+                    Text(standing.standing_D.toString()),
                     14.hGap,
-                    Text(standing.goalsAgainst.toString()),
+                    Text(standing.standing_W.toString()),
                     14.hGap,
-                    Text(standing.goalsFor.toString()),
+                    Text(standing.standing_L.toString()),
                     14.hGap,
-                    Text(standing.points.toString()),
+                    Text(standing.standing_PTS.toString()),
                   ],
                 ),
               ),

@@ -1,6 +1,7 @@
 import 'package:elite_one/l10n/l10n.dart';
 import 'package:elite_one/src/configs/theme/elite_theme.dart';
 import 'package:elite_one/src/features/auth/domain/cubits/cubit/elite_auth_cubit.dart';
+import 'package:elite_one/src/features/elite/domain/blocs/standings_bloc/standings_bloc.dart';
 import 'package:elite_one/src/features/elite/domain/cubits/elite_theme_cubit.dart';
 import 'package:elite_one/src/router/router.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,12 @@ class _EliteOneState extends State<EliteOne> {
         ),
         BlocProvider<EliteAuthCubit>(
           create: (context) => EliteAuthCubit(),
+        ),
+        BlocProvider<StandingsBloc>(
+          create: (context) => StandingsBloc()
+            ..add(
+              const StandingsEvent.getStandings(),
+            ),
         ),
       ],
       child: BlocBuilder<ThemeCubit, bool>(

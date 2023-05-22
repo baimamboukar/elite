@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:elite_one/src/features/elite/data/models/club_model.dart';
 
-class Standing {
+class StandingX {
   final int points;
   final int played;
   final int won;
@@ -12,7 +12,7 @@ class Standing {
   final int goalDifference;
 
   final Club club;
-  Standing({
+  StandingX({
     required this.points,
     required this.played,
     required this.won,
@@ -26,7 +26,7 @@ class Standing {
 }
 
 final standings = [
-  Standing(
+  StandingX(
     points: 25,
     played: 12,
     won: 8,
@@ -37,7 +37,7 @@ final standings = [
     goalDifference: 10,
     club: coton,
   ),
-  Standing(
+  StandingX(
     points: 21,
     played: 12,
     won: 6,
@@ -48,7 +48,7 @@ final standings = [
     goalDifference: 6,
     club: union,
   ),
-  Standing(
+  StandingX(
     points: 20,
     played: 12,
     won: 6,
@@ -59,7 +59,7 @@ final standings = [
     goalDifference: 3,
     club: gazelle,
   ),
-  Standing(
+  StandingX(
     points: 18,
     played: 12,
     won: 5,
@@ -70,7 +70,7 @@ final standings = [
     goalDifference: 3,
     club: canon,
   ),
-  Standing(
+  StandingX(
     points: 15,
     played: 12,
     won: 4,
@@ -81,7 +81,7 @@ final standings = [
     goalDifference: 0,
     club: feutcheu,
   ),
-  Standing(
+  StandingX(
     points: 13,
     played: 12,
     won: 3,
@@ -92,7 +92,7 @@ final standings = [
     goalDifference: -2,
     club: dragon,
   ),
-  Standing(
+  StandingX(
     points: 12,
     played: 12,
     won: 3,
@@ -103,7 +103,7 @@ final standings = [
     goalDifference: -4,
     club: yafoot,
   ),
-  Standing(
+  StandingX(
     points: 11,
     played: 12,
     won: 3,
@@ -114,7 +114,7 @@ final standings = [
     goalDifference: -6,
     club: avion,
   ),
-  Standing(
+  StandingX(
     points: 10,
     played: 12,
     won: 2,
@@ -125,7 +125,7 @@ final standings = [
     goalDifference: -6,
     club: asfao,
   ),
-  Standing(
+  StandingX(
     points: 9,
     played: 12,
     won: 2,
@@ -136,7 +136,7 @@ final standings = [
     goalDifference: -9,
     club: pwd,
   ),
-  Standing(
+  StandingX(
     points: 8,
     played: 12,
     won: 2,
@@ -147,7 +147,7 @@ final standings = [
     goalDifference: -10,
     club: apejes,
   ),
-  Standing(
+  StandingX(
     points: 7,
     played: 12,
     won: 1,
@@ -158,7 +158,7 @@ final standings = [
     goalDifference: -7,
     club: aigle,
   ),
-  Standing(
+  StandingX(
     points: 6,
     played: 12,
     won: 1,
@@ -169,7 +169,7 @@ final standings = [
     goalDifference: -12,
     club: colombe,
   ),
-  Standing(
+  StandingX(
     points: 5,
     played: 12,
     won: 0,
