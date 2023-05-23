@@ -19,7 +19,8 @@ mixin _$EliteAuthState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() processing,
+    required TResult Function() googleProcessing,
+    required TResult Function() facebookProcessing,
     required TResult Function(EliteUser user) authenticated,
     required TResult Function(String failure) failure,
   }) =>
@@ -27,7 +28,8 @@ mixin _$EliteAuthState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? processing,
+    TResult? Function()? googleProcessing,
+    TResult? Function()? facebookProcessing,
     TResult? Function(EliteUser user)? authenticated,
     TResult? Function(String failure)? failure,
   }) =>
@@ -35,7 +37,8 @@ mixin _$EliteAuthState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? processing,
+    TResult Function()? googleProcessing,
+    TResult Function()? facebookProcessing,
     TResult Function(EliteUser user)? authenticated,
     TResult Function(String failure)? failure,
     required TResult orElse(),
@@ -44,7 +47,8 @@ mixin _$EliteAuthState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Processing value) processing,
+    required TResult Function(_GoogleProcessing value) googleProcessing,
+    required TResult Function(_FacebookProcessing value) facebookProcessing,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Failure value) failure,
   }) =>
@@ -52,7 +56,8 @@ mixin _$EliteAuthState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Processing value)? processing,
+    TResult? Function(_GoogleProcessing value)? googleProcessing,
+    TResult? Function(_FacebookProcessing value)? facebookProcessing,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Failure value)? failure,
   }) =>
@@ -60,7 +65,8 @@ mixin _$EliteAuthState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Processing value)? processing,
+    TResult Function(_GoogleProcessing value)? googleProcessing,
+    TResult Function(_FacebookProcessing value)? facebookProcessing,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
@@ -124,7 +130,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() processing,
+    required TResult Function() googleProcessing,
+    required TResult Function() facebookProcessing,
     required TResult Function(EliteUser user) authenticated,
     required TResult Function(String failure) failure,
   }) {
@@ -135,7 +142,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? processing,
+    TResult? Function()? googleProcessing,
+    TResult? Function()? facebookProcessing,
     TResult? Function(EliteUser user)? authenticated,
     TResult? Function(String failure)? failure,
   }) {
@@ -146,7 +154,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? processing,
+    TResult Function()? googleProcessing,
+    TResult Function()? facebookProcessing,
     TResult Function(EliteUser user)? authenticated,
     TResult Function(String failure)? failure,
     required TResult orElse(),
@@ -161,7 +170,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Processing value) processing,
+    required TResult Function(_GoogleProcessing value) googleProcessing,
+    required TResult Function(_FacebookProcessing value) facebookProcessing,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Failure value) failure,
   }) {
@@ -172,7 +182,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Processing value)? processing,
+    TResult? Function(_GoogleProcessing value)? googleProcessing,
+    TResult? Function(_FacebookProcessing value)? facebookProcessing,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Failure value)? failure,
   }) {
@@ -183,7 +194,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Processing value)? processing,
+    TResult Function(_GoogleProcessing value)? googleProcessing,
+    TResult Function(_FacebookProcessing value)? facebookProcessing,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
@@ -200,35 +212,35 @@ abstract class _Initial implements EliteAuthState {
 }
 
 /// @nodoc
-abstract class _$$_ProcessingCopyWith<$Res> {
-  factory _$$_ProcessingCopyWith(
-          _$_Processing value, $Res Function(_$_Processing) then) =
-      __$$_ProcessingCopyWithImpl<$Res>;
+abstract class _$$_GoogleProcessingCopyWith<$Res> {
+  factory _$$_GoogleProcessingCopyWith(
+          _$_GoogleProcessing value, $Res Function(_$_GoogleProcessing) then) =
+      __$$_GoogleProcessingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ProcessingCopyWithImpl<$Res>
-    extends _$EliteAuthStateCopyWithImpl<$Res, _$_Processing>
-    implements _$$_ProcessingCopyWith<$Res> {
-  __$$_ProcessingCopyWithImpl(
-      _$_Processing _value, $Res Function(_$_Processing) _then)
+class __$$_GoogleProcessingCopyWithImpl<$Res>
+    extends _$EliteAuthStateCopyWithImpl<$Res, _$_GoogleProcessing>
+    implements _$$_GoogleProcessingCopyWith<$Res> {
+  __$$_GoogleProcessingCopyWithImpl(
+      _$_GoogleProcessing _value, $Res Function(_$_GoogleProcessing) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Processing implements _Processing {
-  const _$_Processing();
+class _$_GoogleProcessing implements _GoogleProcessing {
+  const _$_GoogleProcessing();
 
   @override
   String toString() {
-    return 'EliteAuthState.processing()';
+    return 'EliteAuthState.googleProcessing()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Processing);
+        (other.runtimeType == runtimeType && other is _$_GoogleProcessing);
   }
 
   @override
@@ -238,35 +250,38 @@ class _$_Processing implements _Processing {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() processing,
+    required TResult Function() googleProcessing,
+    required TResult Function() facebookProcessing,
     required TResult Function(EliteUser user) authenticated,
     required TResult Function(String failure) failure,
   }) {
-    return processing();
+    return googleProcessing();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? processing,
+    TResult? Function()? googleProcessing,
+    TResult? Function()? facebookProcessing,
     TResult? Function(EliteUser user)? authenticated,
     TResult? Function(String failure)? failure,
   }) {
-    return processing?.call();
+    return googleProcessing?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? processing,
+    TResult Function()? googleProcessing,
+    TResult Function()? facebookProcessing,
     TResult Function(EliteUser user)? authenticated,
     TResult Function(String failure)? failure,
     required TResult orElse(),
   }) {
-    if (processing != null) {
-      return processing();
+    if (googleProcessing != null) {
+      return googleProcessing();
     }
     return orElse();
   }
@@ -275,42 +290,165 @@ class _$_Processing implements _Processing {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Processing value) processing,
+    required TResult Function(_GoogleProcessing value) googleProcessing,
+    required TResult Function(_FacebookProcessing value) facebookProcessing,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Failure value) failure,
   }) {
-    return processing(this);
+    return googleProcessing(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Processing value)? processing,
+    TResult? Function(_GoogleProcessing value)? googleProcessing,
+    TResult? Function(_FacebookProcessing value)? facebookProcessing,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Failure value)? failure,
   }) {
-    return processing?.call(this);
+    return googleProcessing?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Processing value)? processing,
+    TResult Function(_GoogleProcessing value)? googleProcessing,
+    TResult Function(_FacebookProcessing value)? facebookProcessing,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
-    if (processing != null) {
-      return processing(this);
+    if (googleProcessing != null) {
+      return googleProcessing(this);
     }
     return orElse();
   }
 }
 
-abstract class _Processing implements EliteAuthState {
-  const factory _Processing() = _$_Processing;
+abstract class _GoogleProcessing implements EliteAuthState {
+  const factory _GoogleProcessing() = _$_GoogleProcessing;
+}
+
+/// @nodoc
+abstract class _$$_FacebookProcessingCopyWith<$Res> {
+  factory _$$_FacebookProcessingCopyWith(_$_FacebookProcessing value,
+          $Res Function(_$_FacebookProcessing) then) =
+      __$$_FacebookProcessingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_FacebookProcessingCopyWithImpl<$Res>
+    extends _$EliteAuthStateCopyWithImpl<$Res, _$_FacebookProcessing>
+    implements _$$_FacebookProcessingCopyWith<$Res> {
+  __$$_FacebookProcessingCopyWithImpl(
+      _$_FacebookProcessing _value, $Res Function(_$_FacebookProcessing) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_FacebookProcessing implements _FacebookProcessing {
+  const _$_FacebookProcessing();
+
+  @override
+  String toString() {
+    return 'EliteAuthState.facebookProcessing()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_FacebookProcessing);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() googleProcessing,
+    required TResult Function() facebookProcessing,
+    required TResult Function(EliteUser user) authenticated,
+    required TResult Function(String failure) failure,
+  }) {
+    return facebookProcessing();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? googleProcessing,
+    TResult? Function()? facebookProcessing,
+    TResult? Function(EliteUser user)? authenticated,
+    TResult? Function(String failure)? failure,
+  }) {
+    return facebookProcessing?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? googleProcessing,
+    TResult Function()? facebookProcessing,
+    TResult Function(EliteUser user)? authenticated,
+    TResult Function(String failure)? failure,
+    required TResult orElse(),
+  }) {
+    if (facebookProcessing != null) {
+      return facebookProcessing();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_GoogleProcessing value) googleProcessing,
+    required TResult Function(_FacebookProcessing value) facebookProcessing,
+    required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_Failure value) failure,
+  }) {
+    return facebookProcessing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_GoogleProcessing value)? googleProcessing,
+    TResult? Function(_FacebookProcessing value)? facebookProcessing,
+    TResult? Function(_Authenticated value)? authenticated,
+    TResult? Function(_Failure value)? failure,
+  }) {
+    return facebookProcessing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_GoogleProcessing value)? googleProcessing,
+    TResult Function(_FacebookProcessing value)? facebookProcessing,
+    TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Failure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (facebookProcessing != null) {
+      return facebookProcessing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FacebookProcessing implements EliteAuthState {
+  const factory _FacebookProcessing() = _$_FacebookProcessing;
 }
 
 /// @nodoc
@@ -378,7 +516,8 @@ class _$_Authenticated implements _Authenticated {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() processing,
+    required TResult Function() googleProcessing,
+    required TResult Function() facebookProcessing,
     required TResult Function(EliteUser user) authenticated,
     required TResult Function(String failure) failure,
   }) {
@@ -389,7 +528,8 @@ class _$_Authenticated implements _Authenticated {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? processing,
+    TResult? Function()? googleProcessing,
+    TResult? Function()? facebookProcessing,
     TResult? Function(EliteUser user)? authenticated,
     TResult? Function(String failure)? failure,
   }) {
@@ -400,7 +540,8 @@ class _$_Authenticated implements _Authenticated {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? processing,
+    TResult Function()? googleProcessing,
+    TResult Function()? facebookProcessing,
     TResult Function(EliteUser user)? authenticated,
     TResult Function(String failure)? failure,
     required TResult orElse(),
@@ -415,7 +556,8 @@ class _$_Authenticated implements _Authenticated {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Processing value) processing,
+    required TResult Function(_GoogleProcessing value) googleProcessing,
+    required TResult Function(_FacebookProcessing value) facebookProcessing,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Failure value) failure,
   }) {
@@ -426,7 +568,8 @@ class _$_Authenticated implements _Authenticated {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Processing value)? processing,
+    TResult? Function(_GoogleProcessing value)? googleProcessing,
+    TResult? Function(_FacebookProcessing value)? facebookProcessing,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Failure value)? failure,
   }) {
@@ -437,7 +580,8 @@ class _$_Authenticated implements _Authenticated {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Processing value)? processing,
+    TResult Function(_GoogleProcessing value)? googleProcessing,
+    TResult Function(_FacebookProcessing value)? facebookProcessing,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
@@ -523,7 +667,8 @@ class _$_Failure implements _Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() processing,
+    required TResult Function() googleProcessing,
+    required TResult Function() facebookProcessing,
     required TResult Function(EliteUser user) authenticated,
     required TResult Function(String failure) failure,
   }) {
@@ -534,7 +679,8 @@ class _$_Failure implements _Failure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? processing,
+    TResult? Function()? googleProcessing,
+    TResult? Function()? facebookProcessing,
     TResult? Function(EliteUser user)? authenticated,
     TResult? Function(String failure)? failure,
   }) {
@@ -545,7 +691,8 @@ class _$_Failure implements _Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? processing,
+    TResult Function()? googleProcessing,
+    TResult Function()? facebookProcessing,
     TResult Function(EliteUser user)? authenticated,
     TResult Function(String failure)? failure,
     required TResult orElse(),
@@ -560,7 +707,8 @@ class _$_Failure implements _Failure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Processing value) processing,
+    required TResult Function(_GoogleProcessing value) googleProcessing,
+    required TResult Function(_FacebookProcessing value) facebookProcessing,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Failure value) failure,
   }) {
@@ -571,7 +719,8 @@ class _$_Failure implements _Failure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Processing value)? processing,
+    TResult? Function(_GoogleProcessing value)? googleProcessing,
+    TResult? Function(_FacebookProcessing value)? facebookProcessing,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Failure value)? failure,
   }) {
@@ -582,7 +731,8 @@ class _$_Failure implements _Failure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Processing value)? processing,
+    TResult Function(_GoogleProcessing value)? googleProcessing,
+    TResult Function(_FacebookProcessing value)? facebookProcessing,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),

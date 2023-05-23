@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elite_one/src/features/elite/data/models/standing.dart';
 import 'package:elite_one/src/features/elite/domain/blocs/standings_bloc/standings_bloc.dart';
 import 'package:elite_one/src/features/elite/presentation/widgets/standing_tile.dart';
+import 'package:elite_one/src/shared/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,16 +22,25 @@ class EliteStandings extends StatelessWidget with AutoRouteWrapper {
             child: CircularProgressIndicator(),
           ),
           loaded: (standings) => Expanded(
-            child: ListView.builder(
-              itemCount: standings.length,
-              itemBuilder: (BuildContext context, int index) {
-                final standing = standings[index];
-
-                return StandingTile(
-                  standing: standing,
-                  index: index,
-                );
-              },
+            child: RefreshIndicator.adaptive(
+              onRefresh: () async => context.read<StandingsBloc>()
+                ..add(const StandingsEvent.getStandings()),
+              child: ListView.builder(
+                itemCount: standings.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final standing = standings[index];
+                  final color = index < 3
+                      ? context.colorScheme.primaryContainer.withOpacity(0.55)
+                      : (index > standings.length - 4
+                          ? context.colorScheme.errorContainer
+                          : context.colorScheme.surface);
+                  return StandingTile(
+                    standing: standing,
+                    index: index,
+                    //color: color,
+                  );
+                },
+              ),
             ),
           ),
           failed: (message) => Center(

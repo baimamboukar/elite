@@ -10,7 +10,7 @@ class EliteAuthCubit extends HydratedCubit<EliteAuthState> {
   EliteAuthCubit() : super(const EliteAuthState.initial());
   final service = EliteAuthServices();
   Future<void> signUpWithGoogle() async {
-    emit(const EliteAuthState.processing());
+    emit(const EliteAuthState.googleProcessing());
     try {
       final user = await service.continueWithGoogle();
       emit(EliteAuthState.authenticated(user: user));
@@ -19,8 +19,18 @@ class EliteAuthCubit extends HydratedCubit<EliteAuthState> {
     }
   }
 
+  Future<void> continueWithFacebook() async {
+    emit(const EliteAuthState.facebookProcessing());
+    try {
+      final user = await service.continueWithFacebook();
+      emit(EliteAuthState.authenticated(user: user));
+    } catch (err) {
+      emit(EliteAuthState.failure(failure: err.toString()));
+    }
+  }
+
   Future<void> logout() async {
-    emit(const EliteAuthState.processing());
+    //emit(const EliteAuthState.processing());
     await service.logout();
     emit(const EliteAuthState.initial());
   }

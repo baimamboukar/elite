@@ -23,12 +23,12 @@ class EliteUserProfile extends StatelessWidget {
             34.vGap,
             Column(
               children: [
-                CircleAvatar(
-                  radius: 32,
-                  backgroundImage: NetworkImage(
-                    '${context.user!.imageURL}',
-                  ),
-                ),
+                // CircleAvatar(
+                //   radius: 32,
+                //   backgroundImage: NetworkImage(
+                //     '${context.user!.imageURL}',
+                //   ),
+                // ),
                 4.hGap,
                 Text(
                   context.user!.name,

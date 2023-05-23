@@ -25,24 +25,24 @@ class Standing {
   });
   factory Standing.fromMap(Map<String, dynamic> map) {
     return Standing(
-      standing_place: (map['standing_place'].toInt() ?? 0) as int,
-      standing_place_type: (map['standing_place_type'] ?? '') as String,
-      standing_team: (map['standing_team'] ?? '') as String,
-      standing_P: (map['standing_P'].toInt() ?? 0) as int,
-      standing_W: (map['standing_W'].toInt() ?? 0) as int,
-      standing_D: (map['standing_D'].toInt() ?? 0) as int,
-      standing_L: (map['standing_L'].toInt() ?? 0) as int,
-      standing_F: (map['standing_F'].toInt() ?? 0) as int,
-      standing_A: (map['standing_A'].toInt() ?? 0) as int,
-      standing_GD: (map['standing_GD'].toInt() ?? 0) as int,
-      standing_PTS: (map['standing_PTS'].toInt() ?? 0) as int,
-      team_key: (map['team_key'].toInt() ?? 0) as int,
-      league_key: (map['league_key'].toInt() ?? 0) as int,
-      league_season: (map['league_season'] ?? '') as String,
-      league_round: (map['league_round'] ?? '') as String,
-      standing_updated: (map['standing_updated'] ?? '') as String,
-      fk_stage_key: (map['fk_stage_key'].toInt() ?? 0) as int,
-      stage_name: (map['stage_name'] ?? '') as String,
+      standing_place: (map['standing_place'] as int?) ?? 0,
+      standing_place_type: (map['standing_place_type'] as String?) ?? '',
+      standing_team: (map['standing_team'] as String?) ?? '',
+      standing_P: (map['standing_P'] as int?) ?? 0,
+      standing_W: (map['standing_W'] as int?) ?? 0,
+      standing_D: (map['standing_D'] as int?) ?? 0,
+      standing_L: (map['standing_L'] as int?) ?? 0,
+      standing_F: (map['standing_F'] as int?) ?? 0,
+      standing_A: (map['standing_A'] as int?) ?? 0,
+      standing_GD: (map['standing_GD'] as int?) ?? 0,
+      standing_PTS: (map['standing_PTS'] as int?) ?? 0,
+      team_key: (map['team_key'] as int?) ?? 0,
+      league_key: (map['league_key'] as int?) ?? 0,
+      league_season: (map['league_season'] as String?) ?? '',
+      league_round: (map['league_round'] as String?) ?? '',
+      standing_updated: (map['standing_updated'] as String?) ?? '',
+      fk_stage_key: (map['fk_stage_key'] as int?) ?? 0,
+      stage_name: (map['stage_name'] as String?) ?? '',
     );
   }
 
@@ -138,5 +138,4 @@ class Standing {
   String toString() {
     return 'Standing(standing_place: $standing_place, standing_place_type: $standing_place_type, standing_team: $standing_team, standing_P: $standing_P, standing_W: $standing_W, standing_D: $standing_D, standing_L: $standing_L, standing_F: $standing_F, standing_A: $standing_A, standing_GD: $standing_GD, standing_PTS: $standing_PTS, team_key: $team_key, league_key: $league_key, league_season: $league_season, league_round: $league_round, standing_updated: $standing_updated, fk_stage_key: $fk_stage_key, stage_name: $stage_name)';
   }
-
 }

@@ -6,10 +6,11 @@ class StandingTile extends StatelessWidget {
   const StandingTile({
     required this.standing,
     required this.index,
+    this.color,
     super.key,
   });
   final Standing standing;
-
+  final Color? color;
   final int index;
 
   @override
@@ -22,7 +23,7 @@ class StandingTile extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4),
-          color: context.colorScheme.errorContainer,
+          color: color ?? context.colorScheme.surface,
         ),
         child: Padding(
           padding: const EdgeInsets.all(8),

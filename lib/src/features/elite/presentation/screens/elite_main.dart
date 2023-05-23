@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elite_one/src/features/elite/data/models/live_match.dart';
 import 'package:elite_one/src/features/elite/data/models/upcoming_match.dart';
+import 'package:elite_one/src/features/elite/domain/blocs/fixtures_bloc/fixtures_bloc.dart';
 import 'package:elite_one/src/features/elite/presentation/widgets/elite_calendart.dart';
 import 'package:elite_one/src/features/elite/presentation/widgets/elite_live_match.dart';
 import 'package:elite_one/src/features/elite/presentation/widgets/upcoming_tile.dart';
 import 'package:elite_one/src/shared/extensions/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
 class EliteMain extends StatelessWidget {
@@ -48,6 +50,7 @@ class EliteMain extends StatelessWidget {
                 },
               ),
             ),
+            14.vGap,
             Row(
               children: [
                 Text(
@@ -59,20 +62,52 @@ class EliteMain extends StatelessWidget {
                 ),
               ],
             ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: upcomingMatches.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final upcoming = upcomingMatches[index];
-                  return UpcomingTile(
-                    match: upcoming,
-                  );
-                },
-              ),
-            ),
+            const _UpcomingFixtures(),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _UpcomingFixtures extends StatelessWidget {
+  const _UpcomingFixtures();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<FixturesBloc, FixturesState>(
+      builder: (context, state) {
+        return state.maybeWhen(
+          initial: () => const SizedBox.shrink(),
+          loading: () => const Center(
+            child: CircularProgressIndicator(),
+          ),
+          loaded: (fixtures) {
+            return Expanded(
+              child: RefreshIndicator.adaptive(
+                onRefresh: () async {
+                  context.read<FixturesBloc>().add(
+                        FixturesEvent.getFixtures(
+                          from: DateTime.now(),
+                          to: DateTime.now().add(const Duration(days: 7)),
+                        ),
+                      );
+                },
+                child: ListView.builder(
+                  itemCount: upcomingMatches.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final upcoming = fixtures[index];
+                    return UpcomingTile(
+                      match: upcoming,
+                    );
+                  },
+                ),
+              ),
+            );
+          },
+          orElse: () => const SizedBox.shrink(),
+        );
+      },
     );
   }
 }

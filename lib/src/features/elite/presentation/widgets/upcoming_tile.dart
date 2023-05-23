@@ -1,5 +1,5 @@
 import 'package:elite_one/src/app/assets.dart';
-import 'package:elite_one/src/features/elite/data/models/upcoming_match.dart';
+import 'package:elite_one/src/features/elite/data/models/fixture.dart';
 import 'package:elite_one/src/shared/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +8,7 @@ class UpcomingTile extends StatelessWidget {
     required this.match,
     super.key,
   });
-  final UpcomingMatch match;
+  final Fixture match;
 
   @override
   Widget build(BuildContext context) {
@@ -28,29 +28,36 @@ class UpcomingTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                match.home.name,
+                match.event_home_team,
                 style: context.textTheme.bodySmall!.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
               ),
               4.hGap,
-              Image.asset(
-                match.home.logo ?? Assets.assetsImagesFootball,
-                height: 24,
-                width: 24,
-              ),
+              if (match.home_team_logo.isNotEmpty)
+                Image.network(
+                  match.home_team_logo,
+                  height: 24,
+                  width: 24,
+                ),
+              if (match.home_team_logo.isEmpty)
+                Image.asset(
+                  Assets.assetsImagesFootball,
+                  height: 24,
+                  width: 24,
+                ),
               8.hGap,
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    match.date!,
+                    match.event_date,
                     style: context.textTheme.labelSmall!.copyWith(
                       color: context.colorScheme.primary,
                     ),
                   ),
                   Text(
-                    match.time!,
+                    match.event_time,
                     style: context.textTheme.bodySmall!.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -58,14 +65,21 @@ class UpcomingTile extends StatelessWidget {
                 ],
               ),
               8.hGap,
-              Image.asset(
-                match.away.logo ?? Assets.assetsImagesFootball,
-                height: 24,
-                width: 24,
-              ),
+              if (match.away_team_logo.isNotEmpty)
+                Image.network(
+                  match.away_team_logo,
+                  height: 24,
+                  width: 24,
+                ),
+              if (match.away_team_logo.isEmpty)
+                Image.asset(
+                  Assets.assetsImagesFootball,
+                  height: 24,
+                  width: 24,
+                ),
               4.hGap,
               Text(
-                match.away.name,
+                match.event_away_team,
                 style: context.textTheme.bodySmall!.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
