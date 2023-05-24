@@ -1,0 +1,28 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter/material.dart';
+
+class MyObserver extends AutoRouterObserver {
+  @override
+  void didPush(Route<dynamic>? route, Route<dynamic>? previousRoute) {
+    // Register a Firebase Analytics event when the user pushes to the "About" route.
+    FirebaseAnalytics.instance.logEvent(
+      name: 'page_visited',
+      parameters: {
+        'route_name': route!.settings.name,
+        'routed_from': route.settings.name
+      },
+    );
+  }
+
+  // only override to observer tab routes
+  @override
+  void didInitTabRoute(TabPageRoute route, TabPageRoute? previousRoute) {
+    debugPrint('Tab route visited: ${route.name}');
+  }
+
+  @override
+  void didChangeTabRoute(TabPageRoute route, TabPageRoute previousRoute) {
+    debugPrint('Tab route re-visited: ${route.name}');
+  }
+}

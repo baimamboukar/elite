@@ -153,11 +153,11 @@ class UpcomingTile extends StatelessWidget {
                           pollOptions: [
                             PollOption(
                               title: Text(match.event_away_team),
-                              votes: 18,
+                              votes: 12,
                             ),
                             PollOption(
                               title: Text(match.event_home_team),
-                              votes: 18,
+                              votes: 28,
                             )
                           ],
                         )
