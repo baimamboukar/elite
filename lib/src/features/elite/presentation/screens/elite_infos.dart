@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elite_one/src/features/elite/presentation/widgets/elite_list.dart';
+import 'package:elite_one/src/features/elite/presentation/widgets/goals_standings.dart';
 import 'package:elite_one/src/features/elite/presentation/widgets/league_standings.dart';
 import 'package:elite_one/src/shared/extensions/extensions.dart';
 import 'package:flutter/material.dart';

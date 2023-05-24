@@ -4,6 +4,7 @@ import 'package:elite_one/src/shared/extensions/date.dart';
 import 'package:elite_one/src/shared/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_polls/flutter_polls.dart';
 
 class UpcomingTile extends StatelessWidget {
   const UpcomingTile({
@@ -22,8 +23,8 @@ class UpcomingTile extends StatelessWidget {
             return BottomSheet(
               enableDrag: false,
               onClosing: () {},
-              builder: (context) => Container(
-                height: 200,
+              builder: (context) => DecoratedBox(
+                //height: 200,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(16),
@@ -126,6 +127,40 @@ class UpcomingTile extends StatelessWidget {
                             12.vGap,
                           ],
                         ),
+                        const Divider(),
+                        Text(
+                          'Who will win ?',
+                          style: context.textTheme.bodyLarge!.copyWith(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                        FlutterPolls(
+                          pollId: 'lorem',
+                          onVoted: (option, count) async {
+                            return true;
+                          },
+                          votedBackgroundColor: context.colorScheme.onPrimary,
+                          pollOptionsSplashColor: context.colorScheme.primary,
+                          pollOptionsFillColor:
+                              context.colorScheme.primaryContainer,
+                          leadingVotedProgessColor:
+                              context.colorScheme.inversePrimary,
+                          //votedProgressColor: context.colorScheme.primary,
+                          pollTitle: Text(
+                            '${match.event_home_team} VS ${match.event_away_team}',
+                          ),
+                          pollOptions: [
+                            PollOption(
+                              title: Text(match.event_away_team),
+                              votes: 18,
+                            ),
+                            PollOption(
+                              title: Text(match.event_home_team),
+                              votes: 18,
+                            )
+                          ],
+                        )
                       ],
                     ),
                   ),
@@ -176,9 +211,10 @@ class UpcomingTile extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      match.event_date,
+                      match.event_date.format,
                       style: context.textTheme.labelSmall!.copyWith(
                         color: context.colorScheme.primary,
+                        fontSize: 7.55,
                       ),
                     ),
                     Text(

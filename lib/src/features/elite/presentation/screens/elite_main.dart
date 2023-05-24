@@ -1,3 +1,4 @@
+import 'package:animated_shimmer/animated_shimmer.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:elite_one/src/features/elite/data/models/live_match.dart';
 import 'package:elite_one/src/features/elite/data/models/upcoming_match.dart';
@@ -81,9 +82,24 @@ class _UpcomingFixtures extends StatelessWidget {
     return BlocBuilder<FixturesBloc, FixturesState>(
       builder: (context, state) {
         return state.maybeWhen(
-          initial: () => const SizedBox.shrink(),
-          loading: () => const Center(
-            child: CircularProgressIndicator(),
+          orElse: () => const SizedBox.shrink(),
+          loading: () => Expanded(
+            child: ListView.builder(
+              itemCount: 5,
+              itemBuilder: (BuildContext context, int index) {
+                return Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(4),
+                    child: AnimatedShimmer(
+                      height: 64,
+                      width: context.width,
+                      borderRadius: const BorderRadius.all(Radius.circular(4)),
+                      delayInMilliSeconds: Duration(milliseconds: index * 500),
+                    ),
+                  ),
+                );
+              },
+            ),
           ),
           loaded: (fixtures) {
             return Expanded(
@@ -91,8 +107,9 @@ class _UpcomingFixtures extends StatelessWidget {
                 onRefresh: () async {
                   context.read<FixturesBloc>().add(
                         FixturesEvent.getFixtures(
-                          from: DateTime.now(),
-                          to: DateTime.now().add(const Duration(days: 7)),
+                          to: DateTime.now(),
+                          from:
+                              DateTime.now().subtract(const Duration(days: 40)),
                         ),
                       );
                 },
@@ -108,7 +125,30 @@ class _UpcomingFixtures extends StatelessWidget {
               ),
             );
           },
-          orElse: () => const SizedBox.shrink(),
+          failed: (message) => Center(
+            child: RefreshIndicator.adaptive(
+              onRefresh: () async {
+                context.read<FixturesBloc>().add(
+                      FixturesEvent.getFixtures(
+                        to: DateTime.now(),
+                        from: DateTime.now().subtract(const Duration(days: 40)),
+                      ),
+                    );
+              },
+              child: const Column(
+                children: [
+                  Icon(
+                    Icons.error,
+                    size: 38,
+                  ),
+                  Text(
+                    'Something went wrong, please try again later!',
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+          ),
         );
       },
     );

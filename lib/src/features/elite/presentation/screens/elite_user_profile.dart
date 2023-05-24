@@ -8,6 +8,7 @@ import 'package:elite_one/src/shared/extensions/extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hicons/flutter_hicons.dart';
 
 @RoutePage()
 class EliteUserProfile extends StatelessWidget {
@@ -23,12 +24,12 @@ class EliteUserProfile extends StatelessWidget {
             34.vGap,
             Column(
               children: [
-                // CircleAvatar(
-                //   radius: 32,
-                //   backgroundImage: NetworkImage(
-                //     '${context.user!.imageURL}',
-                //   ),
-                // ),
+                CircleAvatar(
+                  radius: 32,
+                  backgroundImage: NetworkImage(
+                    '${context.user!.imageURL}',
+                  ),
+                ),
                 4.hGap,
                 Text(
                   context.user!.name,
@@ -103,7 +104,7 @@ class EliteUserProfile extends StatelessWidget {
             const Spacer(),
             ListTile(
               //  tileColor: context.colorScheme.errorContainer,
-              leading: const Icon(Icons.logout),
+              leading: const Icon(Hicons.logout),
               title: Text(
                 'Logout',
                 style: context.textTheme.bodyMedium!.copyWith(

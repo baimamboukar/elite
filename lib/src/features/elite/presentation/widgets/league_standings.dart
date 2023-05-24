@@ -1,3 +1,4 @@
+import 'package:animated_shimmer/animated_shimmer.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:elite_one/src/features/elite/domain/blocs/standings_bloc/standings_bloc.dart';
 import 'package:elite_one/src/features/elite/presentation/widgets/standing_tile.dart';
@@ -17,8 +18,23 @@ class EliteStandings extends StatelessWidget with AutoRouteWrapper {
     return BlocBuilder<StandingsBloc, StandingsState>(
       builder: (context, state) {
         return state.maybeWhen(
-          loading: () => const Center(
-            child: CircularProgressIndicator(),
+          loading: () => Expanded(
+            child: ListView.builder(
+              itemCount: 5,
+              itemBuilder: (BuildContext context, int index) {
+                return Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(4),
+                    child: AnimatedShimmer(
+                      height: 64,
+                      width: context.width,
+                      borderRadius: const BorderRadius.all(Radius.circular(4)),
+                      delayInMilliSeconds: Duration(milliseconds: index * 500),
+                    ),
+                  ),
+                );
+              },
+            ),
           ),
           loaded: (standings) => Expanded(
             child: RefreshIndicator.adaptive(
