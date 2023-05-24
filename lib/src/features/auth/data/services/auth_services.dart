@@ -102,9 +102,7 @@ class EliteAuthServices {
 
   Future<EliteUser> continueWithFacebook() async {
     try {
-      final result = await FacebookAuth.instance.login(
-        loginBehavior: LoginBehavior.dialogOnly,
-      );
+      final result = await FacebookAuth.instance.login();
 
       final accessToken = result.accessToken;
       final facebookAuthCredential =

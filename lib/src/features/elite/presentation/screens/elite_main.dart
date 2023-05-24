@@ -4,6 +4,7 @@ import 'package:elite_one/src/features/elite/data/models/upcoming_match.dart';
 import 'package:elite_one/src/features/elite/domain/blocs/fixtures_bloc/fixtures_bloc.dart';
 import 'package:elite_one/src/features/elite/presentation/widgets/elite_calendart.dart';
 import 'package:elite_one/src/features/elite/presentation/widgets/elite_live_match.dart';
+import 'package:elite_one/src/features/elite/presentation/widgets/live_now.dart';
 import 'package:elite_one/src/features/elite/presentation/widgets/upcoming_tile.dart';
 import 'package:elite_one/src/shared/extensions/extensions.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,8 @@ class EliteMain extends StatelessWidget {
                     color: context.colorScheme.primary,
                   ),
                 ),
+                8.hGap,
+                const LiveNow(),
               ],
             ),
             SizedBox(

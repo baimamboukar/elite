@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:elite_one/src/features/elite/presentation/widgets/goals_standings.dart';
+import 'package:elite_one/src/features/elite/presentation/widgets/elite_list.dart';
 import 'package:elite_one/src/features/elite/presentation/widgets/league_standings.dart';
 import 'package:elite_one/src/shared/extensions/extensions.dart';
 import 'package:flutter/material.dart';
@@ -39,8 +39,6 @@ class EliteInfos extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        const _StandingsHeader(),
-                        const Divider(),
                         const EliteStandings(),
                         14.vGap,
                         const Row(
@@ -52,7 +50,10 @@ class EliteInfos extends StatelessWidget {
                     ),
                     Column(
                       children: [
-                        const EliteScorerStandings(),
+                        const Expanded(
+                          child: TeamList(),
+                        ),
+                        //const EliteScorerStandings(),
                         14.vGap,
                         const Row(
                           children: [
@@ -68,28 +69,6 @@ class EliteInfos extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _StandingsHeader extends StatelessWidget {
-  const _StandingsHeader();
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        34.hGap,
-        const Text('Team'),
-        const Spacer(),
-        const Text('D'),
-        14.hGap,
-        const Text('W'),
-        14.hGap,
-        const Text('L'),
-        14.hGap,
-        const Text('Pts'),
-      ],
     );
   }
 }

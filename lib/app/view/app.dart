@@ -44,8 +44,8 @@ class _EliteOneState extends State<EliteOne> {
           create: (context) => FixturesBloc()
             ..add(
               FixturesEvent.getFixtures(
-                from: DateTime.now(),
-                to: DateTime.now().subtract(const Duration(days: 21)),
+                to: DateTime.now(),
+                from: DateTime.now().subtract(const Duration(days: 40)),
               ),
             ),
         ),

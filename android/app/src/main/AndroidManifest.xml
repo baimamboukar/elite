@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.verygoodcore.elite_one">
+    package="dev.baimamboukar.eliteone">
     <application
         android:label="EliteOne"
         android:name="${applicationName}"
@@ -42,6 +42,6 @@
             android:value="2" />
     </application>
     <queries>
-        <provider android:authorities="com.facebook.katana.provider.PlatformProvider" />
+        <package android:name="com.facebook.katana" />
     </queries>
 </manifest>

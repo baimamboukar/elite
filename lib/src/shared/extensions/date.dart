@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 extension DateX on DateTime {
   String get getSalutation {
     if (hour < 12) {
@@ -113,6 +115,37 @@ extension DateX on DateTime {
         return 'Sun';
       default:
         return 'Mon';
+    }
+  }
+}
+
+extension DateFormaterX on String {
+  String get format {
+    final date = DateTime.parse(this);
+    final formatter = DateFormat('d MMMM y');
+    var formattedDate = formatter.format(date);
+
+    // Add the ordinal suffix to the day
+    final day = date.day;
+    final suffix = _getOrdinalSuffix(day);
+    return formattedDate =
+        formattedDate.replaceFirst(RegExp(r'\b(\d{1,2})\b'), '$day$suffix');
+  }
+
+  static String _getOrdinalSuffix(int day) {
+    if (day >= 11 && day <= 13) {
+      return 'th';
+    } else {
+      switch (day % 10) {
+        case 1:
+          return 'st';
+        case 2:
+          return 'nd';
+        case 3:
+          return 'rd';
+        default:
+          return 'th';
+      }
     }
   }
 }

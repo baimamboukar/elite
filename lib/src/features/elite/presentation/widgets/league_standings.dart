@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:elite_one/src/features/elite/data/models/standing.dart';
 import 'package:elite_one/src/features/elite/domain/blocs/standings_bloc/standings_bloc.dart';
 import 'package:elite_one/src/features/elite/presentation/widgets/standing_tile.dart';
 import 'package:elite_one/src/shared/extensions/extensions.dart';
@@ -14,7 +13,7 @@ class EliteStandings extends StatelessWidget with AutoRouteWrapper {
   @override
   Widget build(BuildContext context) {
     // compare and sort standings
-    standings.sort((a, b) => b.points.compareTo(a.points));
+    // standings.sort((a, b) => b.points.compareTo(a.points));
     return BlocBuilder<StandingsBloc, StandingsState>(
       builder: (context, state) {
         return state.maybeWhen(
@@ -26,19 +25,22 @@ class EliteStandings extends StatelessWidget with AutoRouteWrapper {
               onRefresh: () async => context.read<StandingsBloc>()
                 ..add(const StandingsEvent.getStandings()),
               child: ListView.builder(
-                itemCount: standings.length,
+                itemCount: standings.length + 1,
                 itemBuilder: (BuildContext context, int index) {
-                  final standing = standings[index];
-                  final color = index < 3
+                  final color = index < 4
                       ? context.colorScheme.primaryContainer.withOpacity(0.55)
-                      : (index > standings.length - 4
+                      : (index > standings.length - 3
                           ? context.colorScheme.errorContainer
                           : context.colorScheme.surface);
-                  return StandingTile(
-                    standing: standing,
-                    index: index,
-                    //color: color,
-                  );
+                  if (index == 0) {
+                    return const _StandingsHeader();
+                  } else {
+                    return StandingTile(
+                      standing: standings[index - 1],
+                      index: index - 1,
+                      color: color,
+                    );
+                  }
                 },
               ),
             ),
@@ -62,6 +64,35 @@ class EliteStandings extends StatelessWidget with AutoRouteWrapper {
           const StandingsEvent.getStandings(),
         ),
       child: this,
+    );
+  }
+}
+
+class _StandingsHeader extends StatelessWidget {
+  const _StandingsHeader();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const Spacer(),
+        Text(
+          'Team',
+          style: context.textTheme.bodyLarge!.copyWith(
+            color: context.colorScheme.primary,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
+        ),
+        const Spacer(),
+        const Text('D'),
+        14.hGap,
+        const Text('W'),
+        14.hGap,
+        const Text('L'),
+        14.hGap,
+        const Text('Pts'),
+      ],
     );
   }
 }

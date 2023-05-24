@@ -1,4 +1,4 @@
-package com.example.verygoodcore.elite_one
+package dev.baimamboukar.eliteone
 
 import io.flutter.embedding.android.FlutterActivity
 

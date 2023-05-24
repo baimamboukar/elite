@@ -30,7 +30,7 @@ class StandingTile extends StatelessWidget {
           child: Row(
             children: [
               Text(
-                '${index + 1}',
+                standing.standing_place.toString(),
                 style: context.textTheme.bodyLarge!.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
