@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:elite_one/src/features/elite/data/models/goal_standing.dart';
 import 'package:elite_one/src/features/elite/presentation/widgets/scorer_tile.dart';
+import 'package:elite_one/src/shared/extensions/log.dart';
 import 'package:flutter/material.dart';
 
 class EliteScorerStandings extends StatelessWidget {
@@ -17,8 +19,14 @@ class EliteScorerStandings extends StatelessWidget {
         shrinkWrap: true,
         itemBuilder: (BuildContext context, int index) {
           final standing = goalStandings[index];
-          return ScorerTile(
-            standing: standing,
+          return GestureDetector(
+            onTap: () {
+              '[ROUTING TO]: player-details/id'.log();
+              context.router.pushNamed('/player-details/${standing.player.id}');
+            },
+            child: ScorerTile(
+              standing: standing,
+            ),
           );
         },
       ),

@@ -1,23 +1,45 @@
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:elite_one/app/push_notifications/onesignal_service.dart';
 import 'package:elite_one/src/app/assets.dart';
 import 'package:elite_one/src/features/elite/data/models/fixture.dart';
+import 'package:elite_one/src/shared/extensions/auth_cubitx.dart';
 import 'package:elite_one/src/shared/extensions/date.dart';
 import 'package:elite_one/src/shared/extensions/extensions.dart';
+import 'package:elite_one/src/shared/extensions/payloadx.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_polls/flutter_polls.dart';
 
-class UpcomingTile extends StatelessWidget {
+class UpcomingTile extends StatefulWidget {
   const UpcomingTile({
     required this.match,
     super.key,
   });
   final Fixture match;
 
+  @override
+  State<UpcomingTile> createState() => _UpcomingTileState();
+}
+
+class _UpcomingTileState extends State<UpcomingTile> {
   /// Callback called after user has voted
   Future<bool> _onVoted(option, count) async {
     //TODO: implement Firestore callback
     return true;
+  }
+
+  Future<void> get _subscribeMatch async {
+    final payload = context.matchSubscriptionPayload(
+      user: context.user!.name,
+      homeLogo: widget.match.home_team_logo,
+      match:
+          '${widget.match.event_home_team} VS ${widget.match.event_away_team}',
+    );
+    await OnesignalService().senPushNotification(
+      payload: payload,
+    );
   }
 
   @override
@@ -46,7 +68,7 @@ class UpcomingTile extends StatelessWidget {
                         const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                     child: Column(
                       children: [
-                        14.vGap,
+                        4.vGap,
                         Container(
                           height: 7,
                           width: 34,
@@ -56,25 +78,41 @@ class UpcomingTile extends StatelessWidget {
                           ),
                         ),
                         14.vGap,
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //   children: [
-                        //     Text(
-                        //       'Subscribe to this event',
-                        //       style: context.textTheme.bodyLarge!.copyWith(
-                        //         fontWeight: FontWeight.bold,
-                        //         //fontSize: 24,
-                        //       ),
-                        //     ),
-                        //     Switch.adaptive(
-                        //       value: false,
-                        //       onChanged: (subscribed) {},
-                        //     )
-                        //   ],
-                        // ),
+                        Container(
+                          height: 48,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            color: context.colorScheme.primary,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Row(
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    'Subscribe to this match to not miss any event',
+                                    style:
+                                        context.textTheme.labelSmall!.copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      color: context.colorScheme.onPrimary,
+                                    ),
+                                  ),
+                                ),
+                                14.hGap,
+                                InkWell(
+                                  onTap: () async => _subscribeMatch,
+                                  child: const Icon(
+                                    Icons.subscriptions,
+                                    size: 18,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
                         14.vGap,
                         Text(
-                          match.event_stadium,
+                          widget.match.event_stadium,
                           style: context.textTheme.bodyMedium!.copyWith(
                             fontWeight: FontWeight.bold,
                             //fontSize: 24,
@@ -85,13 +123,13 @@ class UpcomingTile extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.network(
-                              match.league_logo,
+                              widget.match.league_logo,
                               height: 24,
                               width: 24,
                             ),
                             8.hGap,
                             Text(
-                              match.league_name,
+                              widget.match.league_name,
                               style: context.textTheme.bodyMedium,
                             )..animate().rotate(),
                           ],
@@ -104,15 +142,15 @@ class UpcomingTile extends StatelessWidget {
                             Column(
                               children: [
                                 Image.network(
-                                  match.home_team_logo,
+                                  widget.match.home_team_logo,
                                   height: 54,
                                   width: 54,
                                 ),
                                 4.vGap,
                                 Text(
-                                  match.event_home_team.length > 12
-                                      ? '${match.event_home_team.substring(0, 12)}...'
-                                      : match.event_home_team,
+                                  widget.match.event_home_team.length > 12
+                                      ? '${widget.match.event_home_team.substring(0, 12)}...'
+                                      : widget.match.event_home_team,
                                   style: context.textTheme.bodyMedium!
                                       .copyWith(fontWeight: FontWeight.bold),
                                 )
@@ -124,14 +162,14 @@ class UpcomingTile extends StatelessWidget {
                                 Row(
                                   children: [
                                     Text(
-                                      match.event_date.format,
+                                      widget.match.event_date.format,
                                       style: context.textTheme.bodyMedium,
                                     ),
                                   ],
                                 ),
                                 4.vGap,
                                 Text(
-                                  match.event_time,
+                                  widget.match.event_time,
                                   style: context.textTheme.bodyLarge!.copyWith(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 24,
@@ -143,15 +181,15 @@ class UpcomingTile extends StatelessWidget {
                             Column(
                               children: [
                                 Image.network(
-                                  match.away_team_logo,
+                                  widget.match.away_team_logo,
                                   height: 54,
                                   width: 54,
                                 ),
                                 4.vGap,
                                 Text(
-                                  match.event_away_team.length > 12
-                                      ? '${match.event_away_team.substring(0, 12)}...'
-                                      : match.event_away_team,
+                                  widget.match.event_away_team.length > 12
+                                      ? '${widget.match.event_away_team.substring(0, 12)}...'
+                                      : widget.match.event_away_team,
                                   style: context.textTheme.bodyMedium!
                                       .copyWith(fontWeight: FontWeight.bold),
                                 )
@@ -169,11 +207,11 @@ class UpcomingTile extends StatelessWidget {
                           ),
                         ),
                         FlutterPolls(
-                          pollId: '${match.event_key}',
+                          pollId: '${widget.match.event_key}',
                           createdBy: 'Elite',
                           userToVote: 'user',
-                          pollEnded:
-                              match.event_date == DateTime.now().toString(),
+                          pollEnded: widget.match.event_date ==
+                              DateTime.now().toString(),
                           loadingWidget: CupertinoActivityIndicator(
                             color: context.colorScheme.primary,
                           ),
@@ -187,19 +225,19 @@ class UpcomingTile extends StatelessWidget {
                           leadingVotedProgessColor:
                               context.colorScheme.primary.withOpacity(.65),
                           pollTitle: Text(
-                            '${match.event_home_team} VS ${match.event_away_team}',
+                            '${widget.match.event_home_team} VS ${widget.match.event_away_team}',
                           ),
                           pollOptions: [
                             PollOption(
                               title: Row(
                                 children: [
                                   Image.network(
-                                    match.home_team_logo,
+                                    widget.match.home_team_logo,
                                     height: 28,
                                     width: 28,
                                   ),
                                   8.hGap,
-                                  Text(match.event_home_team),
+                                  Text(widget.match.event_home_team),
                                 ],
                               ),
                               votes: 12,
@@ -209,12 +247,12 @@ class UpcomingTile extends StatelessWidget {
                                 children: [
                                   14.hGap,
                                   Image.network(
-                                    match.away_team_logo,
+                                    widget.match.away_team_logo,
                                     height: 28,
                                     width: 28,
                                   ),
                                   8.hGap,
-                                  Text(match.event_away_team),
+                                  Text(widget.match.event_away_team),
                                 ],
                               ),
                               votes: 28,
@@ -246,21 +284,21 @@ class UpcomingTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  match.event_home_team.length > 12
-                      ? '${match.event_home_team.substring(0, 12)}...'
-                      : match.event_home_team,
+                  widget.match.event_home_team.length > 12
+                      ? '${widget.match.event_home_team.substring(0, 12)}...'
+                      : widget.match.event_home_team,
                   style: context.textTheme.bodySmall!.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 4.hGap,
-                if (match.home_team_logo.isNotEmpty)
+                if (widget.match.home_team_logo.isNotEmpty)
                   Image.network(
-                    match.home_team_logo,
+                    widget.match.home_team_logo,
                     height: 24,
                     width: 24,
                   ),
-                if (match.home_team_logo.isEmpty)
+                if (widget.match.home_team_logo.isEmpty)
                   Image.asset(
                     Assets.assetsImagesFootball,
                     height: 24,
@@ -271,14 +309,14 @@ class UpcomingTile extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      match.event_date.format,
+                      widget.match.event_date.format,
                       style: context.textTheme.labelSmall!.copyWith(
                         color: context.colorScheme.primary,
                         fontSize: 7.55,
                       ),
                     ),
                     Text(
-                      match.event_time,
+                      widget.match.event_time,
                       style: context.textTheme.bodySmall!.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -286,13 +324,13 @@ class UpcomingTile extends StatelessWidget {
                   ],
                 ),
                 8.hGap,
-                if (match.away_team_logo.isNotEmpty)
+                if (widget.match.away_team_logo.isNotEmpty)
                   Image.network(
-                    match.away_team_logo,
+                    widget.match.away_team_logo,
                     height: 24,
                     width: 24,
                   ),
-                if (match.away_team_logo.isEmpty)
+                if (widget.match.away_team_logo.isEmpty)
                   Image.asset(
                     Assets.assetsImagesFootball,
                     height: 24,
@@ -300,9 +338,9 @@ class UpcomingTile extends StatelessWidget {
                   ),
                 4.hGap,
                 Text(
-                  match.event_away_team.length > 12
-                      ? '${match.event_away_team.substring(0, 12)}...'
-                      : match.event_away_team,
+                  widget.match.event_away_team.length > 12
+                      ? '${widget.match.event_away_team.substring(0, 12)}...'
+                      : widget.match.event_away_team,
                   overflow: TextOverflow.ellipsis,
                   style: context.textTheme.bodySmall!.copyWith(
                     fontWeight: FontWeight.bold,

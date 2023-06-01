@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:elite_one/src/app/assets.dart';
 import 'package:elite_one/src/features/elite/data/models/goal_standing.dart';
 import 'package:elite_one/src/shared/extensions/extensions.dart';
@@ -55,82 +56,87 @@ class TeamTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      elevation: 10,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: Container(
-        height: 114,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              context.colorScheme.onPrimary.withOpacity(.33),
-              context.colorScheme.onPrimary,
-            ],
-            stops: const [
-              0.4,
-              1.0,
-            ],
-          ),
+    return InkWell(
+      onTap: () {
+        context.router.pushNamed('/player-details/${standing.player.id}');
+      },
+      child: Card(
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        elevation: 10,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(14),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(
-            14,
+        child: Container(
+          height: 114,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                context.colorScheme.onPrimary.withOpacity(.33),
+                context.colorScheme.onPrimary,
+              ],
+              stops: const [
+                0.4,
+                1.0,
+              ],
+            ),
           ),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  CircleAvatar(
-                    radius: 30,
-                    backgroundColor: context.colorScheme.primary,
-                    child: CircleAvatar(
-                      radius: 28,
-                      backgroundImage: AssetImage(
-                        standing.player.photo ?? Assets.assetsImagesFootball,
-                        // height: 74,
-                        // width: 74,
+          child: Padding(
+            padding: const EdgeInsets.all(
+              14,
+            ),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 30,
+                      backgroundColor: context.colorScheme.primary,
+                      child: CircleAvatar(
+                        radius: 28,
+                        backgroundImage: AssetImage(
+                          standing.player.photo ?? Assets.assetsImagesFootball,
+                          // height: 74,
+                          // width: 74,
+                        ),
                       ),
                     ),
-                  ),
-                  8.hGap,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        standing.player.name,
-                        style: context.textTheme.bodyMedium!.copyWith(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: context.colorScheme.primary,
+                    8.hGap,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          standing.player.name,
+                          style: context.textTheme.bodyMedium!.copyWith(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: context.colorScheme.primary,
+                          ),
                         ),
-                      ),
-                      Text(
-                        standing.player.club.name,
-                        style: context.textTheme.labelSmall!
-                            .copyWith(fontSize: 10),
-                      ),
-                      Text(
-                        '${standing.goalsCount} Goals',
-                        textAlign: TextAlign.center,
-                        style: context.textTheme.bodySmall!.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: context.colorScheme.primary,
+                        Text(
+                          standing.player.club.name,
+                          style: context.textTheme.labelSmall!
+                              .copyWith(fontSize: 10),
                         ),
-                      ),
-                      Text(
-                        '${standing.matchPlayed} Matches Played',
-                        style: context.textTheme.bodySmall!.copyWith(),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
+                        Text(
+                          '${standing.goalsCount} Goals',
+                          textAlign: TextAlign.center,
+                          style: context.textTheme.bodySmall!.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: context.colorScheme.primary,
+                          ),
+                        ),
+                        Text(
+                          '${standing.matchPlayed} Matches Played',
+                          style: context.textTheme.bodySmall!.copyWith(),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -41,6 +41,10 @@ class Assets {
   /// assets/images/daman.png
   static const String assetsImagesDaman = 'assets/images/daman.png';
 
+  /// Assets for assetsImagesEn
+  /// assets/images/en.png
+  static const String assetsImagesEn = 'assets/images/en.png';
+
   /// Assets for assetsImagesFacebook
   /// assets/images/facebook.png
   static const String assetsImagesFacebook = 'assets/images/facebook.png';
@@ -52,6 +56,10 @@ class Assets {
   /// Assets for assetsImagesFootball
   /// assets/images/football.png
   static const String assetsImagesFootball = 'assets/images/football.png';
+
+  /// Assets for assetsImagesFr
+  /// assets/images/fr.png
+  static const String assetsImagesFr = 'assets/images/fr.png';
 
   /// Assets for assetsImagesFrank
   /// assets/images/frank.png
@@ -72,8 +80,6 @@ class Assets {
   /// Assets for assetsImagesMarou
   /// assets/images/marou.png
   static const String assetsImagesMarou = 'assets/images/marou.png';
-
-  /// Assets for assetsImagesMarou
 
   /// Assets for assetsImagesNarcisseJr
   /// assets/images/narcisse-jr.jpeg

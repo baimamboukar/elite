@@ -1,10 +1,13 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:elite_one/i18n/translations.g.dart';
 import 'package:elite_one/src/app/assets.dart';
 import 'package:elite_one/src/features/auth/domain/cubits/cubit/elite_auth_cubit.dart';
 import 'package:elite_one/src/features/elite/domain/cubits/elite_theme_cubit.dart';
+import 'package:elite_one/src/features/elite/domain/cubits/language_cubit.dart';
 import 'package:elite_one/src/router/router.gr.dart' as routes;
 import 'package:elite_one/src/shared/extensions/auth_cubitx.dart';
 import 'package:elite_one/src/shared/extensions/extensions.dart';
+import 'package:elite_one/src/shared/extensions/languagex.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -96,6 +99,42 @@ class EliteUserProfile extends StatelessWidget {
                           ? context.read<ThemeCubit>().reset()
                           : context.read<ThemeCubit>().toggle();
                     },
+                  ),
+                );
+              },
+            ),
+            BlocBuilder<LanguageCubit, String>(
+              builder: (BuildContext context, String state) {
+                return ListTile(
+                  leading: const Icon(Icons.language),
+                  title: const Text('Language'),
+                  trailing: DropdownButton<String>(
+                    underline: const SizedBox.shrink(),
+                    value: state,
+                    onChanged: (locale) async {
+                      context.read<LanguageCubit>().setLocale(locale ?? 'en');
+                      LocaleSettings.setLocaleRaw(
+                        locale ?? 'en',
+                      );
+                    },
+                    items: <String>[
+                      'en',
+                      'fr',
+                    ].map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              value.icon,
+                              width: 24,
+                            ),
+                            8.hGap,
+                            Text(value.language),
+                          ],
+                        ),
+                      );
+                    }).toList(),
                   ),
                 );
               },

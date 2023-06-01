@@ -5,6 +5,7 @@ import 'package:elite_one/src/features/auth/domain/cubits/cubit/elite_auth_cubit
 import 'package:elite_one/src/features/elite/domain/blocs/fixtures_bloc/fixtures_bloc.dart';
 import 'package:elite_one/src/features/elite/domain/blocs/standings_bloc/standings_bloc.dart';
 import 'package:elite_one/src/features/elite/domain/cubits/elite_theme_cubit.dart';
+import 'package:elite_one/src/features/elite/domain/cubits/language_cubit.dart';
 import 'package:elite_one/src/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,6 +33,9 @@ class _EliteOneState extends State<EliteOne> {
         BlocProvider<ThemeCubit>(
           create: (context) => ThemeCubit(),
         ),
+        BlocProvider<LanguageCubit>(
+          create: (context) => LanguageCubit(),
+        ),
         BlocProvider<EliteAuthCubit>(
           create: (context) => EliteAuthCubit(),
         ),
@@ -53,16 +57,20 @@ class _EliteOneState extends State<EliteOne> {
       ],
       child: BlocBuilder<ThemeCubit, bool>(
         builder: (BuildContext context, bool isDarkMode) {
-          return MaterialApp.router(
-            theme: theme.toThemeData(Brightness.light),
-            //theme: FlexThemeData.light(scheme: FlexScheme.hippieBlue),
-            darkTheme: theme.toThemeData(Brightness.dark),
-            themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocaleUtils.supportedLocales,
-            locale: TranslationProvider.of(context).flutterLocale,
-            routerConfig: _router.config(),
-            debugShowCheckedModeBanner: false,
+          return BlocBuilder<LanguageCubit, String>(
+            builder: (context, lang) {
+              return MaterialApp.router(
+                theme: theme.toThemeData(Brightness.light),
+                //theme: FlexThemeData.light(scheme: FlexScheme.hippieBlue),
+                darkTheme: theme.toThemeData(Brightness.dark),
+                themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
+                localizationsDelegates: AppLocalizations.localizationsDelegates,
+                supportedLocales: AppLocaleUtils.supportedLocales,
+                locale: TranslationProvider.of(context).flutterLocale,
+                routerConfig: _router.config(),
+                debugShowCheckedModeBanner: false,
+              );
+            },
           );
         },
       ),

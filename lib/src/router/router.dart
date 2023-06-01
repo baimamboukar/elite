@@ -36,5 +36,9 @@ class EliteRouter extends $EliteRouter {
             ),
           ],
         ),
+        AutoRoute(
+          page: PlayerDetails.page,
+          path: '/player-details/:playerID',
+        ),
       ];
 }
