@@ -4,12 +4,17 @@ import 'package:flutter/material.dart';
 
 class MyObserver extends AutoRouterObserver {
   @override
-  void didPush(Route<dynamic>? route, Route<dynamic>? previousRoute) {
-    // Register a Firebase Analytics event when the user pushes to the "About" route.
-    FirebaseAnalytics.instance.logEvent(
+  Future<void> didPush(
+    Route<dynamic>? route,
+    Route<dynamic>? previousRoute,
+  ) async {
+    /// Register a Firebase Analytics event when the user pushes to the "About" route.
+    await FirebaseAnalytics.instance
+        .setCurrentScreen(screenName: route!.settings.name);
+    await FirebaseAnalytics.instance.logEvent(
       name: 'page_visited',
       parameters: {
-        'route_name': route!.settings.name,
+        'route_name': route.settings.name,
         'routed_from': route.settings.name
       },
     );

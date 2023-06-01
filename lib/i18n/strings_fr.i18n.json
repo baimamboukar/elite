@@ -1,0 +1,14 @@
+{
+  "app_name": "Elite One",
+  "something_went_wrong": "Quelque chose s'est mal passé. Veuillez réessayer plus tard!",
+
+  "exceptions": {
+    "user_infos_saving_error": "Désolé, nous n'avons pas pu enregistrer vos informations. Veuillez réessayer ultérieurement.",
+    "user_data_not_found": "Informations introuvables. Veuillez vérifier vos identifiants et réessayer.",
+    "failed_auth": "Échec de l'authentification. Veuillez vérifier vos identifiants de connexion.",
+    "failed_get_standings": "Impossible de récupérer les classements. {{message}}",
+    "failed_get_fixtures": "Impossible de récupérer les calendriers. {{message}}",
+    "elite_home": "En direct",
+    "upcoming": "À venir"
+  }
+}

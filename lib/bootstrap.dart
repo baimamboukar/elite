@@ -1,7 +1,10 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:elite_one/app/push_notifications/onesignal_service.dart';
 import 'package:elite_one/firebase_options.dart';
+import 'package:elite_one/i18n/translations.g.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -35,6 +38,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await dotenv.load();
+  await OnesignalService.initialize;
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -56,7 +60,12 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
     ),
   );
   await runZonedGuarded(
-    () async => runApp(await builder()),
+    () async => runApp(
+      TranslationProvider(
+        child: await builder(),
+      ),
+    ),
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
+  await FirebaseAnalytics.instance.logAppOpen();
 }

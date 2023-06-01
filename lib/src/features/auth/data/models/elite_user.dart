@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, lines_longer_than_80_chars, non_constant_identifier_names
 import 'dart:convert';
 
 class EliteUser {
@@ -7,10 +7,13 @@ class EliteUser {
   final String email;
   final String phone;
   final String? imageURL;
+  final String? device_token;
+
   EliteUser({
     required this.name,
     required this.email,
     required this.phone,
+    this.device_token,
     this.id,
     this.imageURL,
   });
@@ -28,6 +31,7 @@ class EliteUser {
       email: email ?? this.email,
       phone: phone ?? this.phone,
       imageURL: imageURL ?? this.imageURL,
+      device_token: device_token,
     );
   }
 
@@ -38,6 +42,7 @@ class EliteUser {
       'email': email,
       'phone': phone,
       'imageURL': imageURL,
+      'device_token': device_token,
     };
   }
 
@@ -48,6 +53,7 @@ class EliteUser {
       email: (map['email'] ?? '') as String,
       phone: (map['phone'] ?? '') as String,
       imageURL: map['imageURL'] != null ? map['imageURL'] as String : null,
+      device_token: map['device_token'] as String,
     );
   }
 
@@ -58,7 +64,7 @@ class EliteUser {
 
   @override
   String toString() {
-    return 'EliteUser(id: $id, name: $name, email: $email, phone: $phone, imageURL: $imageURL)';
+    return 'EliteUser(id: $id, name: $name, email: $email, phone: $phone, imageURL: $imageURL, device_token: $device_token)';
   }
 
   @override
@@ -69,7 +75,8 @@ class EliteUser {
         other.name == name &&
         other.email == email &&
         other.phone == phone &&
-        other.imageURL == imageURL;
+        other.imageURL == imageURL &&
+        other.device_token == device_token;
   }
 
   @override
@@ -78,6 +85,7 @@ class EliteUser {
         name.hashCode ^
         email.hashCode ^
         phone.hashCode ^
-        imageURL.hashCode;
+        imageURL.hashCode ^
+        device_token.hashCode;
   }
 }

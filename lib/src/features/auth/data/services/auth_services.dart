@@ -3,7 +3,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elite_one/src/features/auth/data/models/elite_user.dart';
 import 'package:elite_one/src/features/auth/data/services/firestore_services.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -35,8 +37,10 @@ class EliteAuthServices {
           .doc(user!.uid)
           .get();
       if (!userSnapshot.exists) {
+        final token = await FirebaseMessaging.instance.getToken();
         final omnisenseUser = EliteUser(
           id: user.uid,
+          device_token: token ?? '',
           name: user.displayName!,
           email: user.email!,
           phone: user.phoneNumber ?? '',
@@ -52,6 +56,8 @@ class EliteAuthServices {
       } else {
         final eliteUser =
             await _firestoreAuthServices.getUserDataFromFirestore(user.uid);
+        await FirebaseAnalytics.instance
+            .logLogin(callOptions: AnalyticsCallOptions(global: true));
         return eliteUser;
       }
     } catch (e) {
@@ -93,6 +99,8 @@ class EliteAuthServices {
       } else {
         final omnisenseUser =
             await _firestoreAuthServices.getUserDataFromFirestore(user.uid);
+        await FirebaseAnalytics.instance
+            .logLogin(callOptions: AnalyticsCallOptions(global: true));
         return omnisenseUser;
       }
     } catch (err) {
@@ -120,9 +128,10 @@ class EliteAuthServices {
 
       if (!userSnapshot.exists) {
         final userData = await FacebookAuth.instance.getUserData();
-
+        final token = await FirebaseMessaging.instance.getToken();
         final eliteUser = EliteUser(
           id: user.uid,
+          device_token: token ?? '',
           name: userData['name'] as String,
           email: userData['email'] as String,
           phone: userData['phone'] as String,
@@ -152,5 +161,11 @@ class EliteAuthServices {
       _auth.signOut(),
       _googleSignIn.signOut(),
     ]);
+    await FirebaseAnalytics.instance.logEvent(
+      name: 'user_logged_out',
+      parameters: {
+        'time': DateTime.now().toString(),
+      },
+    );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:elite_one/i18n/translations.g.dart';
 import 'package:elite_one/l10n/l10n.dart';
 import 'package:elite_one/src/configs/theme/elite_theme.dart';
 import 'package:elite_one/src/features/auth/domain/cubits/cubit/elite_auth_cubit.dart';
@@ -58,7 +59,8 @@ class _EliteOneState extends State<EliteOne> {
             darkTheme: theme.toThemeData(Brightness.dark),
             themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
+            supportedLocales: AppLocaleUtils.supportedLocales,
+            locale: TranslationProvider.of(context).flutterLocale,
             routerConfig: _router.config(),
             debugShowCheckedModeBanner: false,
           );
