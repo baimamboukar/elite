@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "608830968984-35fhoj9o5flekro4652bpof4to4drd9k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.baimamboukar.eliteone",
+            "certificate_hash": "b9e1ea85adee92bb1ca7fc0c2286cd20a1558e97"
+          }
+        },
+        {
           "client_id": "608830968984-128qskd8o46l58j0ust3ms1jii0m25or.apps.googleusercontent.com",
           "client_type": 3
         }

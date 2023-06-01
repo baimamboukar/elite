@@ -70,6 +70,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '608830968984',
     projectId: 'elite-one-mobile',
     storageBucket: 'elite-one-mobile.appspot.com',
+    androidClientId: '608830968984-35fhoj9o5flekro4652bpof4to4drd9k.apps.googleusercontent.com',
     iosClientId: '608830968984-okjgtu26v93v5futvgbaqkb3a3se7i7c.apps.googleusercontent.com',
     iosBundleId: 'dev.baimamboukar.eliteone',
   );
