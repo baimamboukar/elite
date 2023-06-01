@@ -1,0 +1,13 @@
+{
+  "app_name": "Elite One",
+  "something_went_wrong": "Something went wrong, please try again later!",
+  "exceptions": {
+    "user_infos_saving_error": "The user information could not be saved",
+    "user_data_not_found": "User information could not be found",
+    "failed_auth": "Failed to authenticate user",
+    "failed_get_standings": "Failed to get standings {{message}}",
+    "failed_get_fixtures": "Failed to get fixtures {{message}}",
+    "elite_home": "Live Now",
+    "upcoming": "upcoming"
+  }
+}

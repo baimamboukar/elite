@@ -51,38 +51,43 @@ class _CustomCalendarState extends State<CustomCalendar> {
           activeDayScrollPosition = index * 80.0;
         }
 
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 2),
-          child: Container(
-            width: 50,
-            decoration: BoxDecoration(
-              color: isActiveDay
-                  ? context.colorScheme.primary
-                  : context.colorScheme.onPrimary,
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  dayFormat.format(currentDate),
-                  style: TextStyle(
-                    color: isActiveDay
-                        ? context.colorScheme.onPrimary
-                        : context.colorScheme.onBackground,
-                    fontWeight: FontWeight.w800,
+        return InkWell(
+          onTap: () {
+            //TODO: switch UI to particular event and listen
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 2),
+            child: Container(
+              width: 50,
+              decoration: BoxDecoration(
+                color: isActiveDay
+                    ? context.colorScheme.primary
+                    : context.colorScheme.onPrimary,
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    dayFormat.format(currentDate),
+                    style: TextStyle(
+                      color: isActiveDay
+                          ? context.colorScheme.onPrimary
+                          : context.colorScheme.onBackground,
+                      fontWeight: FontWeight.w800,
+                    ),
                   ),
-                ),
-                Text(
-                  dateFormat.format(currentDate),
-                  style: TextStyle(
-                    color: isActiveDay
-                        ? context.colorScheme.onPrimary
-                        : context.colorScheme.onBackground,
-                    fontWeight: FontWeight.w400,
+                  Text(
+                    dateFormat.format(currentDate),
+                    style: TextStyle(
+                      color: isActiveDay
+                          ? context.colorScheme.onPrimary
+                          : context.colorScheme.onBackground,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );

@@ -24,10 +24,10 @@ class FirestoreAuthServices {
         if (userData != null) {
           return EliteUser.fromMap(userData);
         } else {
-          throw Exception('The user has no data');
+          throw Exception('Failed to authenticate user');
         }
       } else {
-        throw Exception('The user is not found');
+        throw Exception('User information could not be found');
       }
     } catch (err) {
       rethrow;

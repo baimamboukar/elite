@@ -78,11 +78,11 @@ class StandingsService {
       final fixtures = fixturesData
           .map((standing) => Fixture.fromMap(standing as Map<String, dynamic>))
           .toList();
-      // filter and return only standing with reguarl season
+      // filter and return only standing with regular season
       return fixtures;
     } on DioError catch (dioEx) {
       // throw good error message to user based on dioEx
-      throw Exception('Failed to get standings: ${dioEx.message}');
+      throw Exception('Failed to get fixtures: ${dioEx.message}');
     } catch (ex) {
       rethrow;
     }

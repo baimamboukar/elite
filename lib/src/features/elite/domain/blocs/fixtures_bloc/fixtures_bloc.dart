@@ -9,22 +9,29 @@ part 'fixtures_bloc.freezed.dart';
 
 class FixturesBloc extends Bloc<FixturesEvent, FixturesState> {
   FixturesBloc() : super(const _Initial()) {
-    on<FixturesEvent>((event, emit) async {
-      await event.map(
-        started: (event) {},
-        getFixtures: (event) async {
-          emit(const FixturesState.loading());
-          try {
-            final fixtures = await StandingsService.getFixtures(
-              from: event.from,
-              to: event.to,
-            );
-            emit(FixturesState.loaded(fixtures));
-          } catch (e) {
-            emit(FixturesState.failed(message: e.toString()));
-          }
-        },
+    on<FixturesEvent>(
+      (event, emit) async {
+        event.map(
+          started: (event) {},
+          getFixtures: (event) => _getFixtures,
+        );
+      },
+    );
+  }
+
+  Future<void> _getFixtures(
+    _GetFixtures event,
+    Emitter<FixturesState> emit,
+  ) async {
+    emit(const FixturesState.loading());
+    try {
+      final fixtures = await StandingsService.getFixtures(
+        from: event.from,
+        to: event.to,
       );
-    });
+      emit(FixturesState.loaded(fixtures));
+    } catch (err) {
+      emit(FixturesState.failed(message: err.toString()));
+    }
   }
 }

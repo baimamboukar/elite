@@ -2,6 +2,7 @@ import 'package:elite_one/src/app/assets.dart';
 import 'package:elite_one/src/features/elite/data/models/fixture.dart';
 import 'package:elite_one/src/shared/extensions/date.dart';
 import 'package:elite_one/src/shared/extensions/extensions.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_polls/flutter_polls.dart';
@@ -13,11 +14,17 @@ class UpcomingTile extends StatelessWidget {
   });
   final Fixture match;
 
+  /// Callback called after user has voted
+  Future<bool> _onVoted(option, count) async {
+    //TODO: implement Firestore callback
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        showModalBottomSheet<void>(
+      onTap: () async {
+        await showModalBottomSheet<void>(
           context: context,
           builder: (BuildContext context) {
             return BottomSheet(
@@ -136,11 +143,18 @@ class UpcomingTile extends StatelessWidget {
                           ),
                         ),
                         FlutterPolls(
-                          pollId: 'lorem',
-                          onVoted: (option, count) async {
-                            return true;
-                          },
+                          pollId: '${match.event_key}',
+                          pollEnded:
+                              match.event_date == DateTime.now().toString(),
+                          loadingWidget: CupertinoActivityIndicator(
+                            color: context.colorScheme.primary,
+                          ),
+                          onVoted: _onVoted,
+                          pollOptionsBorder:
+                              Border.all(color: context.colorScheme.primary),
                           votedBackgroundColor: context.colorScheme.onPrimary,
+                          votedProgressColor: context.colorScheme.secondary,
+
                           pollOptionsSplashColor: context.colorScheme.primary,
                           pollOptionsFillColor:
                               context.colorScheme.primaryContainer,
