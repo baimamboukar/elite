@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:elite_one/i18n/translations.g.dart';
 import 'package:elite_one/src/app/assets.dart';
 import 'package:elite_one/src/router/router.gr.dart' as elite_router;
 import 'package:elite_one/src/shared/extensions/extensions.dart';
@@ -44,11 +45,11 @@ class EliteRoot extends StatelessWidget {
                   height: 24,
                   width: 24,
                 ),
-                label: 'Standings',
+                label: Loc.bottom_nav.standings,
               ),
-              const NavigationDestination(
-                icon: Icon(Icons.settings),
-                label: 'Settings',
+              NavigationDestination(
+                icon: const Icon(Icons.settings),
+                label: Loc.bottom_nav.settings,
               ),
             ],
             selectedIndex: router.activeIndex,

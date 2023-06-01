@@ -48,7 +48,7 @@ class EliteUserProfile extends StatelessWidget {
                 width: 24,
               ),
               title: Text(
-                'Match Reminders',
+                Loc.profile.match_reminders,
                 style: context.textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.w800,
                   color: context.colorScheme.primary,
@@ -66,7 +66,7 @@ class EliteUserProfile extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.notification_add),
               title: Text(
-                'Receive notifications',
+                Loc.profile.recieve_notifications,
                 style: context.textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.w800,
                   color: context.colorScheme.primary,
@@ -86,7 +86,7 @@ class EliteUserProfile extends StatelessWidget {
                 return ListTile(
                   leading: const Icon(Icons.light_mode),
                   title: Text(
-                    'Dark mode',
+                    Loc.profile.dark_mode,
                     style: context.textTheme.bodyMedium!.copyWith(
                       fontWeight: FontWeight.w800,
                       color: context.colorScheme.primary,
@@ -107,7 +107,13 @@ class EliteUserProfile extends StatelessWidget {
               builder: (BuildContext context, String state) {
                 return ListTile(
                   leading: const Icon(Icons.language),
-                  title: const Text('Language'),
+                  title: Text(
+                    Loc.profile.language,
+                    style: context.textTheme.bodyMedium!.copyWith(
+                      fontWeight: FontWeight.w800,
+                      color: context.colorScheme.primary,
+                    ),
+                  ),
                   trailing: DropdownButton<String>(
                     underline: const SizedBox.shrink(),
                     value: state,
@@ -145,7 +151,7 @@ class EliteUserProfile extends StatelessWidget {
               //  tileColor: context.colorScheme.errorContainer,
               leading: const Icon(Hicons.logout),
               title: Text(
-                'Logout',
+                Loc.profile.logout,
                 style: context.textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.w800,
                   color: context.colorScheme.error,

@@ -10,5 +10,28 @@
     "failed_get_fixtures": "Failed to retrieve fixtures. {{message}}",
     "elite_home": "Live Now",
     "upcoming": "Upcoming"
+  },
+  "profile": {
+    "match_reminders": "Match Reminders",
+    "recieve_notifications": "Recieve Notifications",
+    "dark_mode": "Dark Mode",
+    "language": "Language",
+    "logout": "Logout"
+  },
+  "standings": {
+    "elite_standings": "{{app}} standings",
+    "standings": "Standings",
+    "top_scorers": "Top Scorers",
+    "team": "Team",
+    "stats_powered": "Statistics poweredd by {{org}}"
+  },
+  "bottom_nav": {
+    "elite": "Elite",
+    "standings": "Standings",
+    "settings": "Settings"
+  },
+  "fixtures": {
+    "who_will_win": "Who will win?",
+    "subscribe": "subscribe to this match to not miss any event"
   }
 }

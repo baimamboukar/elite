@@ -1,14 +1,37 @@
 {
   "app_name": "Elite One",
-  "something_went_wrong": "Quelque chose s'est mal passé. Veuillez réessayer plus tard!",
+  "something_went_wrong": "Une erreur s'est produite, veuillez réessayer ultérieurement !",
 
   "exceptions": {
-    "user_infos_saving_error": "Désolé, nous n'avons pas pu enregistrer vos informations. Veuillez réessayer ultérieurement.",
-    "user_data_not_found": "Informations introuvables. Veuillez vérifier vos identifiants et réessayer.",
+    "user_infos_saving_error": "Désolé, nous n'avons pas pu enregistrer vos informations utilisateur. Veuillez réessayer ultérieurement.",
+    "user_data_not_found": "Informations utilisateur introuvables. Veuillez vérifier vos identifiants et réessayer.",
     "failed_auth": "Échec de l'authentification. Veuillez vérifier vos identifiants de connexion.",
-    "failed_get_standings": "Impossible de récupérer les classements. {{message}}",
-    "failed_get_fixtures": "Impossible de récupérer les calendriers. {{message}}",
+    "failed_get_standings": "Échec de la récupération des classements. {{message}}",
+    "failed_get_fixtures": "Échec de la récupération des matchs. {{message}}",
     "elite_home": "En direct",
     "upcoming": "À venir"
+  },
+  "profile": {
+    "match_reminders": "Rappels de match",
+    "recieve_notifications": "Recevoir des notifications",
+    "dark_mode": "Mode sombre",
+    "language": "Langue",
+    "logout": "Déconnexion"
+  },
+  "standings": {
+    "elite_standings": "Classement {{app}}",
+    "standings": "Classement",
+    "top_scorers": "Meilleurs buteurs",
+    "team": "Équipe",
+    "stats_powered": "Statistiques fournies par {{org}}"
+  },
+  "bottom_nav": {
+    "elite": "Elite",
+    "standings": "Classement",
+    "settings": "Paramètres"
+  },
+  "fixtures": {
+    "who_will_win": "Qui va gagner?",
+    "subscribe": "Souscrivez à ce match pour ne rien manquer!"
   }
 }

@@ -1,5 +1,6 @@
 import 'package:animated_shimmer/animated_shimmer.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:elite_one/i18n/translations.g.dart';
 import 'package:elite_one/src/features/elite/data/models/live_match.dart';
 import 'package:elite_one/src/features/elite/data/models/upcoming_match.dart';
 import 'package:elite_one/src/features/elite/domain/blocs/fixtures_bloc/fixtures_bloc.dart';
@@ -31,7 +32,7 @@ class EliteMain extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  'Live now',
+                  Loc.exceptions.elite_home,
                   style: context.textTheme.bodyLarge!.copyWith(
                     fontWeight: FontWeight.bold,
                     color: context.colorScheme.primary,
@@ -58,7 +59,7 @@ class EliteMain extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  'Upcoming',
+                  Loc.exceptions.upcoming,
                   style: context.textTheme.bodyLarge!.copyWith(
                     fontWeight: FontWeight.bold,
                     color: context.colorScheme.primary,
@@ -135,14 +136,14 @@ class _UpcomingFixtures extends StatelessWidget {
                       ),
                     );
               },
-              child: const Column(
+              child: Column(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.error,
                     size: 38,
                   ),
                   Text(
-                    'Something went wrong, please try again later!',
+                    Loc.something_went_wrong,
                     textAlign: TextAlign.center,
                   ),
                 ],

@@ -81,6 +81,7 @@ class Assets {
   /// assets/images/marou.png
   static const String assetsImagesMarou = 'assets/images/marou.png';
 
+  /// Assets for assetsImagesMarou
   /// Assets for assetsImagesNarcisseJr
   /// assets/images/narcisse-jr.jpeg
   static const String assetsImagesNarcisseJr = 'assets/images/narcisse-jr.jpeg';

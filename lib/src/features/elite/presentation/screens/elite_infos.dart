@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:elite_one/i18n/translations.g.dart';
 import 'package:elite_one/src/features/elite/presentation/widgets/elite_list.dart';
 import 'package:elite_one/src/features/elite/presentation/widgets/league_standings.dart';
 import 'package:elite_one/src/shared/extensions/extensions.dart';
@@ -19,7 +20,7 @@ class EliteInfos extends StatelessWidget {
             children: [
               14.vGap,
               Text(
-                'MTN Elite One Standings',
+                Loc.standings.elite_standings(App: 'MTN Elite One'),
                 style: context.textTheme.bodyLarge!
                     .copyWith(fontWeight: FontWeight.bold),
               ),
@@ -28,9 +29,9 @@ class EliteInfos extends StatelessWidget {
                 unselectedLabelColor: context.colorScheme.onSurface,
                 indicatorColor: context.colorScheme.primary,
                 dividerColor: Colors.transparent,
-                tabs: const [
-                  Tab(text: 'Standings'),
-                  Tab(text: 'Top Scorers'),
+                tabs: [
+                  Tab(text: Loc.standings.standings),
+                  Tab(text: Loc.standings.top_scorers),
                 ],
               ),
               14.vGap,
@@ -41,9 +42,9 @@ class EliteInfos extends StatelessWidget {
                       children: [
                         const EliteStandings(),
                         14.vGap,
-                        const Row(
+                        Row(
                           children: [
-                            Text('Statistics Powered by Fecafoot'),
+                            Text(Loc.standings.stats_powered(Org: 'FECAFOOT')),
                           ],
                         ),
                       ],
@@ -55,9 +56,9 @@ class EliteInfos extends StatelessWidget {
                         ),
                         //const EliteScorerStandings(),
                         14.vGap,
-                        const Row(
+                        Row(
                           children: [
-                            Text('Statistics Powered by Fecafoot'),
+                            Text(Loc.standings.stats_powered(Org: 'FECAFOOT')),
                           ],
                         ),
                       ],

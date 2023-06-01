@@ -1,9 +1,9 @@
 /// Generated file. Do not edit.
 ///
 /// Locales: 2
-/// Strings: 18 (9 per locale)
+/// Strings: 48 (24 per locale)
 ///
-/// Built on 2023-06-01 at 00:24 UTC
+/// Built on 2023-06-01 at 18:52 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -163,6 +163,10 @@ class TranslationsEn implements BaseTranslations<AppLocale, TranslationsEn> {
 	String get app_name => 'Elite One';
 	String get something_went_wrong => 'Something went wrong, please try again later!';
 	late final TranslationsExceptionsEn exceptions = TranslationsExceptionsEn._(_root);
+	late final TranslationsProfileEn profile = TranslationsProfileEn._(_root);
+	late final TranslationsStandingsEn standings = TranslationsStandingsEn._(_root);
+	late final TranslationsBottomNavEn bottom_nav = TranslationsBottomNavEn._(_root);
+	late final TranslationsFixturesEn fixtures = TranslationsFixturesEn._(_root);
 }
 
 // Path: exceptions
@@ -179,6 +183,57 @@ class TranslationsExceptionsEn {
 	String failed_get_fixtures({required Object Message}) => 'Failed to retrieve fixtures. ${Message}';
 	String get elite_home => 'Live Now';
 	String get upcoming => 'Upcoming';
+}
+
+// Path: profile
+class TranslationsProfileEn {
+	TranslationsProfileEn._(this._root);
+
+	final TranslationsEn _root; // ignore: unused_field
+
+	// Translations
+	String get match_reminders => 'Match Reminders';
+	String get recieve_notifications => 'Recieve Notifications';
+	String get dark_mode => 'Dark Mode';
+	String get language => 'Language';
+	String get logout => 'Logout';
+}
+
+// Path: standings
+class TranslationsStandingsEn {
+	TranslationsStandingsEn._(this._root);
+
+	final TranslationsEn _root; // ignore: unused_field
+
+	// Translations
+	String elite_standings({required Object App}) => '${App} standings';
+	String get standings => 'Standings';
+	String get top_scorers => 'Top Scorers';
+	String get team => 'Team';
+	String stats_powered({required Object Org}) => 'Statistics poweredd by ${Org}';
+}
+
+// Path: bottom_nav
+class TranslationsBottomNavEn {
+	TranslationsBottomNavEn._(this._root);
+
+	final TranslationsEn _root; // ignore: unused_field
+
+	// Translations
+	String get elite => 'Elite';
+	String get standings => 'Standings';
+	String get settings => 'Settings';
+}
+
+// Path: fixtures
+class TranslationsFixturesEn {
+	TranslationsFixturesEn._(this._root);
+
+	final TranslationsEn _root; // ignore: unused_field
+
+	// Translations
+	String get who_will_win => 'Who will win?';
+	String get subscribe => 'subscribe to this match to not miss any event';
 }
 
 // Path: <root>
@@ -203,8 +258,12 @@ class TranslationsFr extends TranslationsEn {
 
 	// Translations
 	@override String get app_name => 'Elite One';
-	@override String get something_went_wrong => 'Quelque chose s\'est mal passé. Veuillez réessayer plus tard!';
+	@override String get something_went_wrong => 'Une erreur s\'est produite, veuillez réessayer ultérieurement !';
 	@override late final TranslationsExceptionsFr exceptions = TranslationsExceptionsFr._(_root);
+	@override late final TranslationsProfileFr profile = TranslationsProfileFr._(_root);
+	@override late final TranslationsStandingsFr standings = TranslationsStandingsFr._(_root);
+	@override late final TranslationsBottomNavFr bottom_nav = TranslationsBottomNavFr._(_root);
+	@override late final TranslationsFixturesFr fixtures = TranslationsFixturesFr._(_root);
 }
 
 // Path: exceptions
@@ -214,11 +273,62 @@ class TranslationsExceptionsFr extends TranslationsExceptionsEn {
 	@override final TranslationsFr _root; // ignore: unused_field
 
 	// Translations
-	@override String get user_infos_saving_error => 'Désolé, nous n\'avons pas pu enregistrer vos informations. Veuillez réessayer ultérieurement.';
-	@override String get user_data_not_found => 'Informations introuvables. Veuillez vérifier vos identifiants et réessayer.';
+	@override String get user_infos_saving_error => 'Désolé, nous n\'avons pas pu enregistrer vos informations utilisateur. Veuillez réessayer ultérieurement.';
+	@override String get user_data_not_found => 'Informations utilisateur introuvables. Veuillez vérifier vos identifiants et réessayer.';
 	@override String get failed_auth => 'Échec de l\'authentification. Veuillez vérifier vos identifiants de connexion.';
-	@override String failed_get_standings({required Object Message}) => 'Impossible de récupérer les classements. ${Message}';
-	@override String failed_get_fixtures({required Object Message}) => 'Impossible de récupérer les calendriers. ${Message}';
+	@override String failed_get_standings({required Object Message}) => 'Échec de la récupération des classements. ${Message}';
+	@override String failed_get_fixtures({required Object Message}) => 'Échec de la récupération des matchs. ${Message}';
 	@override String get elite_home => 'En direct';
 	@override String get upcoming => 'À venir';
+}
+
+// Path: profile
+class TranslationsProfileFr extends TranslationsProfileEn {
+	TranslationsProfileFr._(TranslationsFr root) : this._root = root, super._(root);
+
+	@override final TranslationsFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get match_reminders => 'Rappels de match';
+	@override String get recieve_notifications => 'Recevoir des notifications';
+	@override String get dark_mode => 'Mode sombre';
+	@override String get language => 'Langue';
+	@override String get logout => 'Déconnexion';
+}
+
+// Path: standings
+class TranslationsStandingsFr extends TranslationsStandingsEn {
+	TranslationsStandingsFr._(TranslationsFr root) : this._root = root, super._(root);
+
+	@override final TranslationsFr _root; // ignore: unused_field
+
+	// Translations
+	@override String elite_standings({required Object App}) => 'Classement ${App}';
+	@override String get standings => 'Classement';
+	@override String get top_scorers => 'Meilleurs buteurs';
+	@override String get team => 'Équipe';
+	@override String stats_powered({required Object Org}) => 'Statistiques fournies par ${Org}';
+}
+
+// Path: bottom_nav
+class TranslationsBottomNavFr extends TranslationsBottomNavEn {
+	TranslationsBottomNavFr._(TranslationsFr root) : this._root = root, super._(root);
+
+	@override final TranslationsFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get elite => 'Elite';
+	@override String get standings => 'Classement';
+	@override String get settings => 'Paramètres';
+}
+
+// Path: fixtures
+class TranslationsFixturesFr extends TranslationsFixturesEn {
+	TranslationsFixturesFr._(TranslationsFr root) : this._root = root, super._(root);
+
+	@override final TranslationsFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get who_will_win => 'Qui va gagner?';
+	@override String get subscribe => 'Souscrivez à ce match pour ne rien manquer!';
 }

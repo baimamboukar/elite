@@ -1,6 +1,7 @@
 // ignore_for_file: lines_longer_than_80_chars
 
 import 'package:elite_one/app/push_notifications/onesignal_service.dart';
+import 'package:elite_one/i18n/translations.g.dart';
 import 'package:elite_one/src/app/assets.dart';
 import 'package:elite_one/src/features/elite/data/models/fixture.dart';
 import 'package:elite_one/src/shared/extensions/auth_cubitx.dart';
@@ -90,7 +91,7 @@ class _UpcomingTileState extends State<UpcomingTile> {
                               children: [
                                 Flexible(
                                   child: Text(
-                                    'Subscribe to this match to not miss any event',
+                                    Loc.fixtures.subscribe,
                                     style:
                                         context.textTheme.labelSmall!.copyWith(
                                       fontWeight: FontWeight.w600,
@@ -200,7 +201,7 @@ class _UpcomingTileState extends State<UpcomingTile> {
                         ),
                         const Divider(),
                         Text(
-                          'Who will win ?',
+                          Loc.fixtures.who_will_win,
                           style: context.textTheme.bodyLarge!.copyWith(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
