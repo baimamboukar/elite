@@ -53,7 +53,7 @@ class EliteUser {
       email: (map['email'] ?? '') as String,
       phone: (map['phone'] ?? '') as String,
       imageURL: map['imageURL'] != null ? map['imageURL'] as String : null,
-      device_token: map['device_token'] as String,
+      device_token: map['device_token'] as String?,
     );
   }
 

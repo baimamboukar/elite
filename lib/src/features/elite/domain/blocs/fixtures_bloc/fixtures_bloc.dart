@@ -11,27 +11,22 @@ class FixturesBloc extends Bloc<FixturesEvent, FixturesState> {
   FixturesBloc() : super(const _Initial()) {
     on<FixturesEvent>(
       (event, emit) async {
-        event.map(
+        await event.map(
           started: (event) {},
-          getFixtures: (event) => _getFixtures,
+          getFixtures: (event) async {
+            emit(const FixturesState.loading());
+            try {
+              final fixtures = await StandingsService.getFixtures(
+                from: event.from,
+                to: event.to,
+              );
+              emit(FixturesState.loaded(fixtures));
+            } catch (err) {
+              emit(FixturesState.failed(message: err.toString()));
+            }
+          },
         );
       },
     );
-  }
-
-  Future<void> _getFixtures(
-    _GetFixtures event,
-    Emitter<FixturesState> emit,
-  ) async {
-    emit(const FixturesState.loading());
-    try {
-      final fixtures = await StandingsService.getFixtures(
-        from: event.from,
-        to: event.to,
-      );
-      emit(FixturesState.loaded(fixtures));
-    } catch (err) {
-      emit(FixturesState.failed(message: err.toString()));
-    }
   }
 }

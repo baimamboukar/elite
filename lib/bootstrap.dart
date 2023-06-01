@@ -38,10 +38,13 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await dotenv.load();
-  await OnesignalService.initialize;
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await OnesignalService.initialize;
+  //await RemoteConfigService.initialize;
+  //await PerformanceMonitoring.initialize;
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: await getTemporaryDirectory(),
   );

@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 extension AuthCubitX on BuildContext {
-  EliteUser? get user => BlocProvider.of<EliteAuthCubit>(this).state.mapOrNull(
+  EliteUser? get user => BlocProvider.of<EliteAuthCubit>(this).state.maybeMap(
         authenticated: (state) => state.user,
+        orElse: () => null,
       );
   EliteAuthState get authState => BlocProvider.of<EliteAuthCubit>(this).state;
 

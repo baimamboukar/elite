@@ -46,7 +46,33 @@ class UpcomingTile extends StatelessWidget {
                         const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                     child: Column(
                       children: [
-                        4.vGap,
+                        14.vGap,
+                        Container(
+                          height: 7,
+                          width: 34,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(14),
+                            color: context.colorScheme.primary,
+                          ),
+                        ),
+                        14.vGap,
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //   children: [
+                        //     Text(
+                        //       'Subscribe to this event',
+                        //       style: context.textTheme.bodyLarge!.copyWith(
+                        //         fontWeight: FontWeight.bold,
+                        //         //fontSize: 24,
+                        //       ),
+                        //     ),
+                        //     Switch.adaptive(
+                        //       value: false,
+                        //       onChanged: (subscribed) {},
+                        //     )
+                        //   ],
+                        // ),
+                        14.vGap,
                         Text(
                           match.event_stadium,
                           style: context.textTheme.bodyMedium!.copyWith(
@@ -144,33 +170,53 @@ class UpcomingTile extends StatelessWidget {
                         ),
                         FlutterPolls(
                           pollId: '${match.event_key}',
+                          createdBy: 'Elite',
+                          userToVote: 'user',
                           pollEnded:
                               match.event_date == DateTime.now().toString(),
                           loadingWidget: CupertinoActivityIndicator(
                             color: context.colorScheme.primary,
                           ),
                           onVoted: _onVoted,
-                          pollOptionsBorder:
-                              Border.all(color: context.colorScheme.primary),
-                          votedBackgroundColor: context.colorScheme.onPrimary,
-                          votedProgressColor: context.colorScheme.secondary,
-
-                          pollOptionsSplashColor: context.colorScheme.primary,
-                          pollOptionsFillColor:
-                              context.colorScheme.primaryContainer,
+                          votedBackgroundColor:
+                              context.colorScheme.primary.withOpacity(.25),
+                          votedProgressColor:
+                              context.colorScheme.primary.withOpacity(.75),
+                          voteInProgressColor:
+                              context.colorScheme.primary.withOpacity(.45),
                           leadingVotedProgessColor:
-                              context.colorScheme.inversePrimary,
-                          //votedProgressColor: context.colorScheme.primary,
+                              context.colorScheme.primary.withOpacity(.65),
                           pollTitle: Text(
                             '${match.event_home_team} VS ${match.event_away_team}',
                           ),
                           pollOptions: [
                             PollOption(
-                              title: Text(match.event_away_team),
+                              title: Row(
+                                children: [
+                                  Image.network(
+                                    match.home_team_logo,
+                                    height: 28,
+                                    width: 28,
+                                  ),
+                                  8.hGap,
+                                  Text(match.event_home_team),
+                                ],
+                              ),
                               votes: 12,
                             ),
                             PollOption(
-                              title: Text(match.event_home_team),
+                              title: Row(
+                                children: [
+                                  14.hGap,
+                                  Image.network(
+                                    match.away_team_logo,
+                                    height: 28,
+                                    width: 28,
+                                  ),
+                                  8.hGap,
+                                  Text(match.event_away_team),
+                                ],
+                              ),
                               votes: 28,
                             )
                           ],

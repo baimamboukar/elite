@@ -14,8 +14,10 @@ class _CustomCalendarState extends State<CustomCalendar> {
   final DateTime now = DateTime.now();
   final DateFormat dayFormat = DateFormat.E('en_US');
   final DateFormat dateFormat = DateFormat.d('en_US');
+  final DateFormat monthFormat = DateFormat.MMM();
   final ScrollController _scrollController = ScrollController();
   double activeDayScrollPosition = 0;
+  int activeDayIndex = 0;
 
   @override
   void initState() {
@@ -44,15 +46,18 @@ class _CustomCalendarState extends State<CustomCalendar> {
       itemCount: 7, // Display 7 days
       itemBuilder: (context, index) {
         final currentDate = now.add(Duration(days: index));
-        final isActiveDay = index == 0; // Assuming today is the active day
-
+        final isActiveDay = index == activeDayIndex;
         if (isActiveDay) {
           // Save the active day's scroll position
           activeDayScrollPosition = index * 80.0;
         }
 
         return InkWell(
+          borderRadius: BorderRadius.circular(14),
           onTap: () {
+            setState(() {
+              activeDayIndex = index;
+            });
             //TODO: switch UI to particular event and listen
           },
           child: Padding(
@@ -80,6 +85,15 @@ class _CustomCalendarState extends State<CustomCalendar> {
                   Text(
                     dateFormat.format(currentDate),
                     style: TextStyle(
+                      color: isActiveDay
+                          ? context.colorScheme.onPrimary
+                          : context.colorScheme.onBackground,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  Text(
+                    monthFormat.format(currentDate),
+                    style: context.textTheme.labelSmall!.copyWith(
                       color: isActiveDay
                           ? context.colorScheme.onPrimary
                           : context.colorScheme.onBackground,

@@ -11,24 +11,19 @@ class StandingsBloc extends Bloc<StandingsEvent, StandingsState> {
   StandingsBloc() : super(const _Initial()) {
     on<StandingsEvent>(
       (event, emit) async {
-        event.map(
+        await event.map(
           started: (event) {},
-          getStandings: (event) => _getStandings,
+          getStandings: (event) async {
+            emit(const StandingsState.loading());
+            try {
+              final standings = await StandingsService.getStandings();
+              emit(StandingsState.loaded(standings: standings));
+            } catch (e) {
+              emit(StandingsState.failed(message: e.toString()));
+            }
+          },
         );
       },
     );
-  }
-
-  Future<void> _getStandings(
-    _GetStandings event,
-    Emitter<StandingsState> emit,
-  ) async {
-    emit(const StandingsState.loading());
-    try {
-      final standings = await StandingsService.getStandings();
-      emit(StandingsState.loaded(standings: standings));
-    } catch (e) {
-      emit(StandingsState.failed(message: e.toString()));
-    }
   }
 }
