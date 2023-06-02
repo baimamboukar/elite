@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:elite_one/app/firebase_services/appcheck_service.dart';
 import 'package:elite_one/app/firebase_services/crashlytics_service.dart';
 import 'package:elite_one/app/firebase_services/performance_monitoring_service.dart';
+import 'package:elite_one/app/firebase_services/remote_config_service.dart';
 import 'package:elite_one/app/push_notifications/onesignal_service.dart';
 import 'package:elite_one/firebase_options.dart';
 import 'package:elite_one/i18n/translations.g.dart';
@@ -48,7 +49,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   await OnesignalService.initialize;
   await CrashlyticService.initialize;
   await AppcheckService.initialize;
-  //await RemoteConfigService.initialize;
+  await RemoteConfigService.initialize;
   await PerformanceMonitoring.initialize;
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: await getTemporaryDirectory(),
