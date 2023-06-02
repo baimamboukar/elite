@@ -6,7 +6,9 @@ import 'package:elite_one/src/features/elite/domain/blocs/fixtures_bloc/fixtures
 import 'package:elite_one/src/features/elite/domain/blocs/standings_bloc/standings_bloc.dart';
 import 'package:elite_one/src/features/elite/domain/cubits/elite_theme_cubit.dart';
 import 'package:elite_one/src/features/elite/domain/cubits/language_cubit.dart';
+import 'package:elite_one/src/router/observer.dart';
 import 'package:elite_one/src/router/router.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -66,8 +68,15 @@ class _EliteOneState extends State<EliteOne> {
                 themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
                 localizationsDelegates: AppLocalizations.localizationsDelegates,
                 supportedLocales: AppLocaleUtils.supportedLocales,
-                locale: TranslationProvider.of(context).flutterLocale,
-                routerConfig: _router.config(),
+                locale: Locale(lang),
+                routerConfig: _router.config(
+                  navigatorObservers: () => <NavigatorObserver>[
+                    FirebaseAnalyticsObserver(
+                      analytics: FirebaseAnalytics.instance,
+                    ),
+                    EliteRouterObserver(),
+                  ],
+                ),
                 debugShowCheckedModeBanner: false,
               );
             },

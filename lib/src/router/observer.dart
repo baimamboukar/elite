@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 
-class MyObserver extends AutoRouterObserver {
+class EliteRouterObserver extends AutoRouterObserver {
   @override
   Future<void> didPush(
     Route<dynamic>? route,
@@ -14,8 +14,8 @@ class MyObserver extends AutoRouterObserver {
     await FirebaseAnalytics.instance.logEvent(
       name: 'page_visited',
       parameters: {
-        'route_name': route.settings.name,
-        'routed_from': route.settings.name
+        'route_name': route.settings.name ?? 'unknown',
+        'routed_from': route.settings.name ?? 'unknown',
       },
     );
   }

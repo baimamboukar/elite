@@ -25,6 +25,18 @@ class OnesignalService {
       content: payload.contents['en'],
       heading: payload.title,
       additionalData: payload.data,
+      androidSmallIcon: 'ic_stat_onesignal_default',
+      buttons: [
+        OSActionButton(
+          text: 'Okay',
+          id: 'okay',
+        ),
+        OSActionButton(
+          text: 'View',
+          id: 'view',
+          icon: 'ic_menu_share',
+        ),
+      ],
     );
 
     await OneSignal.shared.postNotification(notification);
