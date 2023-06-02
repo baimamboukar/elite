@@ -1,5 +1,4 @@
 import 'package:elite_one/i18n/translations.g.dart';
-import 'package:elite_one/l10n/l10n.dart';
 import 'package:elite_one/src/configs/theme/elite_theme.dart';
 import 'package:elite_one/src/features/auth/domain/cubits/cubit/elite_auth_cubit.dart';
 import 'package:elite_one/src/features/elite/domain/blocs/fixtures_bloc/fixtures_bloc.dart';
@@ -11,6 +10,7 @@ import 'package:elite_one/src/router/router.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class EliteOne extends StatefulWidget {
   const EliteOne({super.key});
@@ -66,9 +66,9 @@ class _EliteOneState extends State<EliteOne> {
                 //theme: FlexThemeData.light(scheme: FlexScheme.hippieBlue),
                 darkTheme: theme.toThemeData(Brightness.dark),
                 themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
-                localizationsDelegates: AppLocalizations.localizationsDelegates,
+                localizationsDelegates: GlobalMaterialLocalizations.delegates,
                 supportedLocales: AppLocaleUtils.supportedLocales,
-                locale: Locale(lang),
+                locale: TranslationProvider.of(context).flutterLocale,
                 routerConfig: _router.config(
                   navigatorObservers: () => <NavigatorObserver>[
                     FirebaseAnalyticsObserver(
