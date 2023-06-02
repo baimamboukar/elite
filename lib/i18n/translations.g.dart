@@ -1,9 +1,9 @@
 /// Generated file. Do not edit.
 ///
 /// Locales: 2
-/// Strings: 48 (24 per locale)
+/// Strings: 100 (50 per locale)
 ///
-/// Built on 2023-06-01 at 18:52 UTC
+/// Built on 2023-06-02 at 10:16 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -167,6 +167,7 @@ class TranslationsEn implements BaseTranslations<AppLocale, TranslationsEn> {
 	late final TranslationsStandingsEn standings = TranslationsStandingsEn._(_root);
 	late final TranslationsBottomNavEn bottom_nav = TranslationsBottomNavEn._(_root);
 	late final TranslationsFixturesEn fixtures = TranslationsFixturesEn._(_root);
+	late final TranslationsPlayerDetailsEn player_details = TranslationsPlayerDetailsEn._(_root);
 }
 
 // Path: exceptions
@@ -236,6 +237,41 @@ class TranslationsFixturesEn {
 	String get subscribe => 'subscribe to this match to not miss any event';
 }
 
+// Path: player_details
+class TranslationsPlayerDetailsEn {
+	TranslationsPlayerDetailsEn._(this._root);
+
+	final TranslationsEn _root; // ignore: unused_field
+
+	// Translations
+	String get player_details => 'Player Details';
+	String get player_stats => 'Player Stats';
+	String get height => 'Height';
+	String get weight => 'Weight';
+	String get goals => 'Goals';
+	String get mercato_value => 'Mercato Value';
+	String get overall_rating => 'Overall Rating';
+	String get performance_analysis => 'Performance Analysis';
+	String get dribble => 'Dribble';
+	String get pass => 'Pass';
+	String get speed => 'Speed';
+	String get shoot => 'Shoot';
+	String get physical => 'Physical';
+	String get defence => 'Defence';
+	String get age => 'Age';
+	String get position => 'Position';
+	String get team => 'Team';
+	String get assists => 'Assists';
+	String get yellow_cards => 'Yellow Cards';
+	String get red_cards => 'Red Cards';
+	String get matches_played => 'Matches Played';
+	String get player_info => 'Player Info';
+	String get foot => 'Pied';
+	String get right => 'Right';
+	String get left => 'Left';
+	String get both => 'Both';
+}
+
 // Path: <root>
 class TranslationsFr extends TranslationsEn {
 
@@ -264,6 +300,7 @@ class TranslationsFr extends TranslationsEn {
 	@override late final TranslationsStandingsFr standings = TranslationsStandingsFr._(_root);
 	@override late final TranslationsBottomNavFr bottom_nav = TranslationsBottomNavFr._(_root);
 	@override late final TranslationsFixturesFr fixtures = TranslationsFixturesFr._(_root);
+	@override late final TranslationsPlayerDetailsFr player_details = TranslationsPlayerDetailsFr._(_root);
 }
 
 // Path: exceptions
@@ -331,4 +368,39 @@ class TranslationsFixturesFr extends TranslationsFixturesEn {
 	// Translations
 	@override String get who_will_win => 'Qui va gagner?';
 	@override String get subscribe => 'Souscrivez à ce match pour ne rien manquer!';
+}
+
+// Path: player_details
+class TranslationsPlayerDetailsFr extends TranslationsPlayerDetailsEn {
+	TranslationsPlayerDetailsFr._(TranslationsFr root) : this._root = root, super._(root);
+
+	@override final TranslationsFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get player_details => 'Détails du joueur';
+	@override String get player_stats => 'Statistiques du joueur';
+	@override String get height => 'Taille';
+	@override String get weight => 'Poids';
+	@override String get goals => 'Buts';
+	@override String get mercato_value => 'Valeur Mercato';
+	@override String get overall_rating => 'Note globale';
+	@override String get performance_analysis => 'Analyse de performance';
+	@override String get dribble => 'Dribble';
+	@override String get pass => 'Passe';
+	@override String get speed => 'Vitesse';
+	@override String get shoot => 'Tir';
+	@override String get physical => 'Physique';
+	@override String get defence => 'Défense';
+	@override String get age => 'Âge';
+	@override String get position => 'Position';
+	@override String get team => 'Équipe';
+	@override String get assists => 'Passes décisives';
+	@override String get yellow_cards => 'Cartons jaunes';
+	@override String get red_cards => 'Cartons rouges';
+	@override String get matches_played => 'Matchs joués';
+	@override String get player_info => 'Informations sur le joueur';
+	@override String get foot => 'Foot';
+	@override String get right => 'Droit';
+	@override String get left => 'Gauche';
+	@override String get both => 'Les deux';
 }

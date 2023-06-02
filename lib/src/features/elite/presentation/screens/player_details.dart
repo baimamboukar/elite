@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:elite_one/i18n/translations.g.dart';
 import 'package:elite_one/src/app/assets.dart';
 import 'package:elite_one/src/shared/extensions/extensions.dart';
 import 'package:flutter/material.dart';
@@ -25,11 +26,11 @@ class _PlayerDetailsState extends State<PlayerDetails> {
   Widget build(BuildContext context) {
     const ticks = [10, 14, 21, 28, 35];
     var features = [
-      'Pass',
-      'Speed',
-      'Shoot',
-      'Physic',
-      'Dribble',
+      Loc.player_details.pass,
+      Loc.player_details.speed,
+      Loc.player_details.shoot,
+      Loc.player_details.physical,
+      Loc.player_details.dribble,
     ];
     var data = [
       [9, 7.5, 12, 8, 9.8],
@@ -169,13 +170,13 @@ class _PlayerDetailsState extends State<PlayerDetails> {
                           ],
                         ),
                         14.vGap,
-                        const Row(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Text('Age'),
-                            Text('Height'),
-                            Text('Weight'),
-                            Text('Foot'),
+                            Text(Loc.player_details.age),
+                            Text(Loc.player_details.height),
+                            Text(Loc.player_details.weight),
+                            Text(Loc.player_details.foot),
                           ],
                         ),
                         Row(
@@ -216,15 +217,15 @@ class _PlayerDetailsState extends State<PlayerDetails> {
                           ],
                         ),
                         14.vGap,
-                        const Row(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             _DataBox(
-                              title: 'Mercato value',
+                              title: Loc.player_details.mercato_value,
                               data: '€12M',
                             ),
                             _DataBox(
-                              title: 'Overall rating',
+                              title: Loc.player_details.overall_rating,
                               data: '7.8 ⭐️',
                             ),
                           ],
@@ -252,7 +253,7 @@ class _PlayerDetailsState extends State<PlayerDetails> {
                     child: Column(
                       children: [
                         Text(
-                          '⚽️ Performance analysis',
+                          Loc.player_details.performance_analysis,
                           style: context.textTheme.bodyLarge!.copyWith(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,

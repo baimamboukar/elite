@@ -33,5 +33,33 @@
   "fixtures": {
     "who_will_win": "Who will win?",
     "subscribe": "subscribe to this match to not miss any event"
+  },
+  "player_details": {
+    "player_details": "Player Details",
+    "player_stats": "Player Stats",
+    "height": "Height",
+    "weight": "Weight",
+    "goals": "Goals",
+    "mercato_value": "Mercato Value",
+    "overall_rating": "Overall Rating",
+    "performance_analysis": "Performance Analysis",
+    "dribble": "Dribble",
+    "pass": "Pass",
+    "speed": "Speed",
+    "shoot": "Shoot",
+    "physical": "Physical",
+    "defence": "Defence",
+    "age": "Age",
+    "position": "Position",
+    "team": "Team",
+    "assists": "Assists",
+    "yellow_cards": "Yellow Cards",
+    "red_cards": "Red Cards",
+    "matches_played": "Matches Played",
+    "player_info": "Player Info",
+    "foot": "Pied",
+    "right": "Right",
+    "left": "Left",
+    "both": "Both"
   }
 }

@@ -33,5 +33,33 @@
   "fixtures": {
     "who_will_win": "Qui va gagner?",
     "subscribe": "Souscrivez à ce match pour ne rien manquer!"
+  },
+  "player_details": {
+    "player_details": "Détails du joueur",
+    "player_stats": "Statistiques du joueur",
+    "height": "Taille",
+    "weight": "Poids",
+    "goals": "Buts",
+    "mercato_value": "Valeur Mercato",
+    "overall_rating": "Note globale",
+    "performance_analysis": "Analyse de performance",
+    "dribble": "Dribble",
+    "pass": "Passe",
+    "speed": "Vitesse",
+    "shoot": "Tir",
+    "physical": "Physique",
+    "defence": "Défense",
+    "age": "Âge",
+    "position": "Position",
+    "team": "Équipe",
+    "assists": "Passes décisives",
+    "yellow_cards": "Cartons jaunes",
+    "red_cards": "Cartons rouges",
+    "matches_played": "Matchs joués",
+    "player_info": "Informations sur le joueur",
+    "foot": "Foot",
+    "right": "Droit",
+    "left": "Gauche",
+    "both": "Les deux"
   }
 }
