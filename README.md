@@ -22,6 +22,27 @@
 🌐 **Language Support**: Now available in English (en-GB) and French (fr-FR).
 
 # USERS ENGAGEMENT
+- EliteOne has more than 20 daily active users.
+- 10+ downloads on Google Playstore
+
+# RUNNING
+To run EliteOne in your local machine, follow these steps
+- Fork and clone this respository into your local machine
+- Get dependencies by running ```flutter pub get```
+- Select your preferred device on which you want to run the app
+- Run the app by executing ```flutter run```
+
+# ARCHITECTURE AND STACK
+BLoC(Business Logic Component) architecture, which allows to easily and efficiently separate data, domain and presentation layers, for better testability and maintenance.
+
+- Frontend Mobile: **Flutter**
+- Authentication: **Google Federated Indentify Platform**
+- Analytics and BI: **Firebase Analytics**
+- Storage: **Firebase Storage**
+- Databse: **Google Cloud Firestore**
+
+# MORE
+To know more about **EliteOne**, visit the [Official Website](https://elitesense.baimamboukar.dev/)
 ---
 ## License
 
